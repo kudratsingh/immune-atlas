@@ -5,7 +5,26 @@ import Link from "next/link";
 import { CohortStrip } from "@/components/layout/CohortStrip";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { BundleContent } from "@/components/states/BundleContent";
+import { DataTable, type DataColumn } from "@/components/tables/DataTable";
+import {
+  conditionTreatmentSubjects,
+  sampleTypeTimeCounts,
+  type SampleTypeTimeCell,
+  type SubjectCountCell,
+} from "@/lib/samples-view";
 import { formatCount, pluralise } from "@/lib/stats-format";
+
+const structureColumns: DataColumn<SubjectCountCell>[] = [
+  { id: "condition", header: "Condition", render: (row) => row.condition },
+  { id: "treatment", header: "Treatment", render: (row) => row.treatment },
+  { id: "subjects", header: "Subjects", numeric: true, render: (row) => formatCount(row.subjects) },
+];
+
+const typeTimeColumns: DataColumn<SampleTypeTimeCell>[] = [
+  { id: "sample_type", header: "Sample type", render: (row) => row.sampleType },
+  { id: "time", header: "Day", numeric: true, render: (row) => row.time },
+  { id: "samples", header: "Samples", numeric: true, render: (row) => formatCount(row.samples) },
+];
 
 export default function OverviewPage() {
   return (
@@ -31,44 +50,29 @@ export default function OverviewPage() {
             <h2 id="study-structure">Study structure</h2>
             <div className="study-grid">
               <div>
-                <h3>Clinical dimensions</h3>
-                <dl className="definition-list">
-                  <div>
-                    <dt>Conditions</dt>
-                    <dd>{bundle.meta.conditions.join(", ")}</dd>
-                  </div>
-                  <div>
-                    <dt>Treatments</dt>
-                    <dd>{bundle.meta.treatments.join(", ")}</dd>
-                  </div>
-                  <div>
-                    <dt>Sample types</dt>
-                    <dd>{bundle.meta.sample_types.join(", ")}</dd>
-                  </div>
-                </dl>
+                <h3>Condition and treatment (subjects)</h3>
+                <DataTable
+                  caption="Distinct subjects for each condition and treatment"
+                  columns={structureColumns}
+                  getRowKey={(row) => `${row.condition}-${row.treatment}`}
+                  rows={conditionTreatmentSubjects(bundle.samples)}
+                />
               </div>
               <div>
-                <h3>Measurement dimensions</h3>
-                <dl className="definition-list">
-                  <div>
-                    <dt>Time points</dt>
-                    <dd>{bundle.meta.time_points.map((time) => `day ${time}`).join(", ")}</dd>
-                  </div>
-                  <div>
-                    <dt>Cell populations</dt>
-                    <dd>
-                      {bundle.meta.populations
-                        .map((population) => population.display_name)
-                        .join(", ")}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Frequency rows</dt>
-                    <dd>{formatCount(bundle.frequencies_long.length)}</dd>
-                  </div>
-                </dl>
+                <h3>Sample type and time point (samples)</h3>
+                <DataTable
+                  caption="Samples for each sample type and time point"
+                  columns={typeTimeColumns}
+                  getRowKey={(row) => `${row.sampleType}-${row.time}`}
+                  rows={sampleTypeTimeCounts(bundle.samples)}
+                />
               </div>
             </div>
+            <p className="structure-footnote">
+              Populations measured in every sample:{" "}
+              {bundle.meta.populations.map((population) => population.display_name).join(", ")} —{" "}
+              {formatCount(bundle.frequencies_long.length)} frequency rows in total.
+            </p>
           </section>
           <section className="content-section questions" aria-labelledby="three-questions">
             <h2 id="three-questions">Three questions</h2>
