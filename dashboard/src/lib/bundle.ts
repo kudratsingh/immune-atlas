@@ -11,7 +11,7 @@ import {
 
 import type { DashboardBundle } from "./bundle.types";
 
-export const BUNDLE_URL = "/data/bundle.json";
+export const BUNDLE_URL = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/bundle.json`;
 export const SUPPORTED_SCHEMA_VERSION = "1.0";
 
 type Fetcher = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
