@@ -38,7 +38,7 @@ against synthetic DataFrames.
 | -- | ----- | ------ | ----- | ------ |
 | 0 | Planning docs, repo bootstrap | `main` (initial commit) | coordinator | done |
 | 1 | Foundation | `feat/foundation` | coordinator | done |
-| 2 | Data layer | `feat/data-layer` | delegate | todo |
+| 2 | Data layer | `feat/data-layer` | delegate | done |
 | 3 | Analysis | `feat/analysis` | delegate | todo |
 | 4 | Dashboard shell + design system | `feat/dashboard-shell` | delegate | todo |
 | 5 | Pipeline + export + bundle | `feat/pipeline-export` | coordinator | todo |
