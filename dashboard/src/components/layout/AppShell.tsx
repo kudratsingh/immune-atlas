@@ -49,7 +49,13 @@ export function AppShell({ children }: { children: ReactNode }) {
         {children}
       </main>
       <footer className="site-footer">
-        <div>Immune cell population analysis from a versioned, reproducible data bundle.</div>
+        <div>
+          <span>Immune cell population analysis from a versioned, reproducible data bundle.</span>
+          <span className="footer-links">
+            <Link href="/methods/">Provenance</Link>
+            <a href="https://github.com/kudratsingh/immune-atlas">Repository</a>
+          </span>
+        </div>
       </footer>
     </>
   );
