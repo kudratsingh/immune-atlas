@@ -265,27 +265,27 @@ code {
     display: none;
 }
 .strip-connector {
+    bottom: -0.1rem;
     color: var(--accent);
     height: 3.2rem;
     opacity: 0.22;
     position: absolute;
     right: 0.4rem;
-    top: 50%;
-    transform: translateY(-50%);
     width: 2.2rem;
 }
-/* The connector sits on the number line, centred on the step's own height. */
+/* Connectors anchor to the number row (steps that carry one never have a
+   sub-line beneath the number), so they sit on the number line itself. */
 .cohort-strip li:not(:last-child)::after {
     border-bottom: 2px solid var(--rule-strong);
     border-right: 2px solid var(--rule-strong);
     border-radius: 1px;
+    bottom: 1.05rem;
     content: "";
-    height: 0.7rem;
+    height: 0.75rem;
     position: absolute;
     right: 1.4rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(-45deg);
-    width: 0.7rem;
+    transform: rotate(-45deg);
+    width: 0.75rem;
 }
 .cohort-strip span {
     color: var(--ink-muted);
