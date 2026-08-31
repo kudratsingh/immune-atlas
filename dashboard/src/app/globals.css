@@ -1,0 +1,600 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --paper: #f4f7fa;
+    --panel: #ffffff;
+    --ink: #14213d;
+    --ink-muted: #5b6b84;
+    --rule: #d6dee8;
+    --responder: #0e7490;
+    --non-responder: #b45309;
+    --population-1: #1e3a8a;
+    --population-2: #2f55b3;
+    --population-3: #4f7bd9;
+    --population-4: #86a8ea;
+    --population-5: #bfd3f3;
+    --focus: #1d4ed8;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --content-width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--population-1);
+    text-underline-offset: 0.2em;
+}
+a:hover {
+    text-decoration-thickness: 2px;
+}
+a:focus-visible,
+button:focus-visible,
+[tabindex="0"]:focus-visible,
+circle:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+button {
+    min-height: 2.25rem;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--panel);
+    color: var(--ink);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+}
+button:hover {
+    border-color: var(--ink-muted);
+}
+
+code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.87em;
+    overflow-wrap: anywhere;
+}
+
+.skip-link {
+    background: var(--ink);
+    color: var(--panel);
+    left: 1rem;
+    padding: 0.65rem 1rem;
+    position: fixed;
+    top: -5rem;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0.75rem;
+}
+
+.topbar {
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+}
+.topbar-inner {
+    align-items: center;
+    display: flex;
+    gap: var(--space-3);
+    height: 56px;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: var(--content-width);
+    padding: 0 var(--space-3);
+}
+.wordmark {
+    color: var(--ink);
+    flex: 0 0 auto;
+    font-family: "IBM Plex Serif", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.nav-list {
+    align-items: stretch;
+    display: flex;
+    gap: 0.2rem;
+    height: 56px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-list a {
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-muted);
+    display: flex;
+    height: 100%;
+    padding: 0 0.7rem;
+    text-decoration: none;
+}
+.nav-list a:hover {
+    color: var(--ink);
+}
+.nav-list a[aria-current="page"] {
+    border-color: var(--ink);
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.page-shell {
+    margin: 0 auto;
+    max-width: var(--content-width);
+    min-height: calc(100vh - 152px);
+    padding: var(--space-5) var(--space-3) 5rem;
+}
+.site-footer {
+    border-top: 1px solid var(--rule);
+    color: var(--ink-muted);
+    font-size: 13px;
+}
+.site-footer > div {
+    margin: 0 auto;
+    max-width: var(--content-width);
+    padding: 1.25rem var(--space-3);
+}
+
+.page-intro {
+    margin-bottom: var(--space-4);
+    max-width: 75ch;
+}
+.page-intro h1 {
+    font-family: "IBM Plex Serif", serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 var(--space-1);
+}
+.page-intro p {
+    color: var(--ink-muted);
+    font-size: 18px;
+    margin: 0;
+    max-width: 70ch;
+}
+
+.cohort-strip {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin: 0 0 var(--space-5);
+    padding: 0.8rem 1rem 1rem;
+}
+.cohort-strip h2 {
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 0 0.65rem;
+}
+.cohort-strip ol {
+    align-items: stretch;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.cohort-strip li {
+    min-width: 0;
+    padding: 0.15rem 2.25rem 0.15rem 0;
+    position: relative;
+}
+.cohort-strip li:not(:last-child) {
+    flex: 1 1 0;
+}
+.cohort-strip li:not(:last-child)::after {
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    content: "";
+    height: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1.55rem;
+    transform: rotate(-45deg);
+    width: 1rem;
+}
+.cohort-strip span {
+    color: var(--ink-muted);
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cohort-strip strong {
+    display: inline-block;
+    font-family: "IBM Plex Serif", serif;
+    font-size: clamp(1.55rem, 4vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 0.1rem;
+}
+.cohort-strip small {
+    color: var(--ink-muted);
+    display: block;
+    font-size: 12px;
+}
+
+.content-section {
+    margin-top: var(--space-5);
+}
+.content-section > h2,
+.section-heading h2,
+.method-section h2 {
+    font-family: "IBM Plex Serif", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+}
+.section-heading {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+}
+.section-heading h2 {
+    margin-bottom: 0.25rem;
+}
+.section-heading p {
+    color: var(--ink-muted);
+    margin: 0;
+}
+
+.study-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.study-grid > div {
+    border-top: 2px solid var(--ink);
+    padding-top: var(--space-2);
+}
+.study-grid h3 {
+    font-size: 18px;
+    margin: 0 0 var(--space-2);
+}
+.definition-list {
+    margin: 0;
+}
+.definition-list > div {
+    border-top: 1px solid var(--rule);
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: minmax(8rem, 0.35fr) 1fr;
+    padding: 0.7rem 0;
+}
+.definition-list dt {
+    color: var(--ink-muted);
+}
+.definition-list dd {
+    margin: 0;
+}
+
+.questions ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.questions li {
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: var(--space-2);
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+.questions a {
+    color: var(--ink);
+    font-family: "IBM Plex Serif", serif;
+    font-size: 18px;
+}
+.questions span {
+    color: var(--ink-muted);
+    font-size: 13px;
+    text-align: right;
+}
+.provenance-line {
+    color: var(--ink-muted);
+    font-size: 13px;
+    margin-top: var(--space-5);
+}
+
+.table-scroll {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: auto;
+}
+.data-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 680px;
+    width: 100%;
+}
+.data-table caption {
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+.data-table th {
+    background: var(--panel);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-muted);
+    font-size: 13px;
+    font-weight: 500;
+    height: 36px;
+    padding: 0 0.75rem;
+    position: sticky;
+    text-align: left;
+    top: 0;
+    z-index: 2;
+}
+.data-table td {
+    border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+    height: 36px;
+    padding: 0.4rem 0.75rem;
+}
+.data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+.data-table tbody tr:hover td {
+    background: color-mix(in srgb, var(--ink) 4%, var(--panel));
+}
+.data-table .numeric {
+    font-feature-settings: "tnum";
+    text-align: right;
+}
+.data-table code {
+    font-size: 13px;
+}
+
+.small-multiples {
+    display: grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+    margin: var(--space-3) 0 var(--space-4);
+}
+.chart-panel {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0.9rem;
+}
+.chart-heading {
+    align-items: start;
+    display: flex;
+    gap: var(--space-2);
+    justify-content: space-between;
+}
+.chart-heading h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+.chart-heading p {
+    color: var(--ink-muted);
+    font-size: 12px;
+    margin: 0.1rem 0 0;
+}
+.chart-heading button {
+    flex: 0 0 auto;
+    font-size: 12px;
+    min-height: 2rem;
+}
+.chart-surface {
+    min-height: 8rem;
+    opacity: 1;
+    position: relative;
+    transition: opacity 120ms ease;
+}
+.chart-surface svg {
+    display: block;
+    height: auto;
+    max-height: 320px;
+    overflow: visible;
+    width: 100%;
+}
+.chart-tooltip {
+    background: var(--ink);
+    border-radius: 4px;
+    bottom: 0.5rem;
+    color: var(--panel);
+    font-size: 12px;
+    left: 0.5rem;
+    max-width: calc(100% - 1rem);
+    padding: 0.35rem 0.5rem;
+    position: absolute;
+}
+.group-legend {
+    align-items: center;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 0.45rem;
+    margin: calc(var(--space-5) * -0.5) 0 var(--space-2);
+}
+.group-legend span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 0.7rem;
+    margin-left: 0.7rem;
+    width: 0.7rem;
+}
+.group-legend span:first-child {
+    margin-left: 0;
+}
+.responder-swatch {
+    background: var(--responder);
+}
+.non-responder-swatch {
+    background: var(--non-responder);
+}
+.inline-caveat {
+    border-left: 3px solid var(--ink);
+    color: var(--ink-muted);
+    max-width: 75ch;
+    padding-left: 1rem;
+}
+
+.state-message {
+    align-items: center;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    max-width: 46rem;
+    padding: var(--space-3) 0;
+}
+.state-message h2 {
+    font-family: "IBM Plex Serif", serif;
+    font-size: 22px;
+    margin: 0 0 0.25rem;
+}
+.state-message p {
+    color: var(--ink-muted);
+    margin: 0;
+}
+.state-message-error {
+    border-color: var(--non-responder);
+}
+.loading-indicator {
+    border: 3px solid var(--rule);
+    border-top-color: var(--ink);
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.text-button {
+    margin-top: var(--space-2);
+}
+
+.method-section {
+    border-top: 1px solid var(--rule);
+    margin-top: var(--space-4);
+    max-width: 75ch;
+    padding-top: var(--space-3);
+}
+.method-section > p {
+    max-width: 70ch;
+}
+.method-section .table-scroll {
+    margin-top: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0ms !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+        height: auto;
+        padding-top: 0.75rem;
+    }
+    .topbar nav {
+        max-width: 100%;
+        overflow-x: auto;
+        width: 100%;
+    }
+    .nav-list {
+        height: 44px;
+        min-width: max-content;
+    }
+    .nav-list a {
+        padding: 0 0.55rem;
+    }
+    .page-shell {
+        padding-top: var(--space-4);
+    }
+    .study-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+    .cohort-strip ol {
+        align-items: start;
+        flex-direction: column;
+    }
+    .cohort-strip li {
+        border-top: 1px solid var(--rule);
+        padding: 0.7rem 0;
+        width: 100%;
+    }
+    .cohort-strip li:first-child {
+        border-top: 0;
+    }
+    .cohort-strip li:not(:last-child)::after {
+        display: none;
+    }
+    .cohort-strip span {
+        white-space: normal;
+    }
+    .cohort-strip strong {
+        font-size: 1.75rem;
+    }
+    .questions li {
+        align-items: start;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    .questions span {
+        text-align: left;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar-inner,
+    .page-shell,
+    .site-footer > div {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .definition-list > div {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+    }
+    .small-multiples {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .chart-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .chart-heading button {
+        align-self: start;
+    }
+}
