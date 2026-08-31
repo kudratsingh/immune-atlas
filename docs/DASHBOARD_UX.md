@@ -183,8 +183,11 @@ colour. The dashboard borrows from both and from nothing else.
 **Signature element: the cohort strip.** A horizontal sequence of steps, each a
 label and a count, joined by narrowing connectors so the eye reads the funnel:
 `All samples 10,500 ▸ melanoma 5,175 ▸ miraclib 2,655 ▸ PBMC 1,968`. It is the
-gating strategy of the analysis. It appears on every analytic page in the same
-position and is the one place with a display-size number.
+gating strategy of the analysis. On the analytic pages the connectors are
+tapering bands whose width encodes how much of the dataset survives each gate,
+so the funnel itself is data; overview strips that are not funnels keep plain
+chevrons. It appears on every analytic page in the same position and is the
+one place with a display-size number.
 
 **Colour**
 
@@ -210,8 +213,10 @@ colour used decoratively.
 
 - UI and body: IBM Plex Sans, 15 px base, `font-feature-settings: "tnum"` on
   every numeric cell.
-- Page titles and the finding paragraph: IBM Plex Serif, 28 px / 18 px. The
-  finding is set in serif to read as a written statement, distinct from the UI.
+- Display: Fraunces for page titles, cohort counts, section headings, and the
+  finding paragraph — a characterful serif that gives the page its voice while
+  the Plex body stays neutral. The finding is set in the display face to read
+  as a written statement, distinct from the UI.
 - Sample and subject identifiers in tables: IBM Plex Mono at 13 px, only there.
 - Scale: 13 / 15 / 18 / 22 / 28 / 40 (cohort strip counts). Line length ≤ 75
   characters for prose.
@@ -219,8 +224,9 @@ colour used decoratively.
 **Layout**
 
 - Left-aligned, max content width 1200 px, 24 px gutters, 8 px spacing grid.
-- Top bar: wordmark left, five routes right, 56 px tall, `--paper` background
-  with a `--rule` bottom border. No sidebar.
+- Top bar: wordmark left, five routes right, 60 px tall, set as a dark `--ink`
+  band with light pill navigation — the one dark surface on the page, framing
+  the light clinical content. No sidebar.
 - Content blocks — tables, charts, the filter bar, the cohort strip, the
   question links — sit on `--panel` cards with a 1 px `--rule` border, 12 px
   radius, and resting elevation; headings and whitespace still carry the

@@ -88,6 +88,7 @@ export default function BaselinePage() {
               </p>
             </PageIntro>
             <CohortStrip
+              funnel
               steps={[
                 { label: "All samples", count: bundle.meta.n_samples },
                 {

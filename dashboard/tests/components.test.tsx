@@ -31,6 +31,20 @@ describe("shared dashboard components", () => {
     expect(screen.getByText("656 subjects")).toBeInTheDocument();
   });
 
+  it("encodes the narrowing cohort as taper connectors in funnel mode", () => {
+    const { container } = render(
+      <CohortStrip
+        funnel
+        steps={[
+          { label: "All samples", count: 10500 },
+          { label: "melanoma", count: 5175 },
+          { label: "PBMC", count: 1968 },
+        ]}
+      />,
+    );
+    expect(container.querySelectorAll(".strip-connector")).toHaveLength(2);
+  });
+
   it("renders headings and each state with direct recovery copy", async () => {
     const user = userEvent.setup();
     const clear = vi.fn();
