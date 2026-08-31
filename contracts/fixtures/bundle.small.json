@@ -1,0 +1,2094 @@
+{
+  "baseline_subset": {
+    "by_project": [
+      {
+        "n_samples": 4,
+        "project": "prj1"
+      }
+    ],
+    "by_response": [
+      {
+        "n_subjects": 2,
+        "response": "no"
+      },
+      {
+        "n_subjects": 2,
+        "response": "yes"
+      }
+    ],
+    "by_sex": [
+      {
+        "n_subjects": 2,
+        "sex": "F"
+      },
+      {
+        "n_subjects": 2,
+        "sex": "M"
+      }
+    ],
+    "filter": {
+      "condition": "melanoma",
+      "sample_type": "PBMC",
+      "time": 0,
+      "treatment": "miraclib"
+    },
+    "n_samples": 4,
+    "n_subjects": 4,
+    "sample_ids": [
+      "sample00000",
+      "sample00006",
+      "sample00024",
+      "sample00060"
+    ]
+  },
+  "form_answer": {
+    "filter": {
+      "condition": "melanoma",
+      "response": "yes",
+      "sex": "M",
+      "time": 0
+    },
+    "mean_b_cell": 0.0,
+    "n_samples": 0,
+    "n_subjects": 0,
+    "question": "Considering melanoma males of all sample and treatment types, what is the average number of B cells for responders at time=0?"
+  },
+  "frequencies_long": [
+    {
+      "count": 10908,
+      "percentage": 11.702105,
+      "population": "b_cell",
+      "sample": "sample00000",
+      "total_count": 93214
+    },
+    {
+      "count": 24440,
+      "percentage": 26.219237,
+      "population": "cd8_t_cell",
+      "sample": "sample00000",
+      "total_count": 93214
+    },
+    {
+      "count": 20491,
+      "percentage": 21.982749,
+      "population": "cd4_t_cell",
+      "sample": "sample00000",
+      "total_count": 93214
+    },
+    {
+      "count": 13864,
+      "percentage": 14.873302,
+      "population": "nk_cell",
+      "sample": "sample00000",
+      "total_count": 93214
+    },
+    {
+      "count": 23511,
+      "percentage": 25.222606,
+      "population": "monocyte",
+      "sample": "sample00000",
+      "total_count": 93214
+    },
+    {
+      "count": 6777,
+      "percentage": 6.721614,
+      "population": "b_cell",
+      "sample": "sample00001",
+      "total_count": 100824
+    },
+    {
+      "count": 19407,
+      "percentage": 19.248393,
+      "population": "cd8_t_cell",
+      "sample": "sample00001",
+      "total_count": 100824
+    },
+    {
+      "count": 33459,
+      "percentage": 33.185551,
+      "population": "cd4_t_cell",
+      "sample": "sample00001",
+      "total_count": 100824
+    },
+    {
+      "count": 18170,
+      "percentage": 18.021503,
+      "population": "nk_cell",
+      "sample": "sample00001",
+      "total_count": 100824
+    },
+    {
+      "count": 23011,
+      "percentage": 22.822939,
+      "population": "monocyte",
+      "sample": "sample00001",
+      "total_count": 100824
+    },
+    {
+      "count": 9794,
+      "percentage": 10.551378,
+      "population": "b_cell",
+      "sample": "sample00002",
+      "total_count": 92822
+    },
+    {
+      "count": 22940,
+      "percentage": 24.713969,
+      "population": "cd8_t_cell",
+      "sample": "sample00002",
+      "total_count": 92822
+    },
+    {
+      "count": 24274,
+      "percentage": 26.151128,
+      "population": "cd4_t_cell",
+      "sample": "sample00002",
+      "total_count": 92822
+    },
+    {
+      "count": 17482,
+      "percentage": 18.833897,
+      "population": "nk_cell",
+      "sample": "sample00002",
+      "total_count": 92822
+    },
+    {
+      "count": 18332,
+      "percentage": 19.749628,
+      "population": "monocyte",
+      "sample": "sample00002",
+      "total_count": 92822
+    },
+    {
+      "count": 5897,
+      "percentage": 5.910357,
+      "population": "b_cell",
+      "sample": "sample00006",
+      "total_count": 99774
+    },
+    {
+      "count": 31296,
+      "percentage": 31.366889,
+      "population": "cd8_t_cell",
+      "sample": "sample00006",
+      "total_count": 99774
+    },
+    {
+      "count": 28319,
+      "percentage": 28.383146,
+      "population": "cd4_t_cell",
+      "sample": "sample00006",
+      "total_count": 99774
+    },
+    {
+      "count": 12656,
+      "percentage": 12.684667,
+      "population": "nk_cell",
+      "sample": "sample00006",
+      "total_count": 99774
+    },
+    {
+      "count": 21606,
+      "percentage": 21.65494,
+      "population": "monocyte",
+      "sample": "sample00006",
+      "total_count": 99774
+    },
+    {
+      "count": 10403,
+      "percentage": 10.569577,
+      "population": "b_cell",
+      "sample": "sample00007",
+      "total_count": 98424
+    },
+    {
+      "count": 13504,
+      "percentage": 13.720231,
+      "population": "cd8_t_cell",
+      "sample": "sample00007",
+      "total_count": 98424
+    },
+    {
+      "count": 33870,
+      "percentage": 34.412338,
+      "population": "cd4_t_cell",
+      "sample": "sample00007",
+      "total_count": 98424
+    },
+    {
+      "count": 22616,
+      "percentage": 22.978135,
+      "population": "nk_cell",
+      "sample": "sample00007",
+      "total_count": 98424
+    },
+    {
+      "count": 18031,
+      "percentage": 18.319719,
+      "population": "monocyte",
+      "sample": "sample00007",
+      "total_count": 98424
+    },
+    {
+      "count": 8829,
+      "percentage": 9.771673,
+      "population": "b_cell",
+      "sample": "sample00008",
+      "total_count": 90353
+    },
+    {
+      "count": 26215,
+      "percentage": 29.013979,
+      "population": "cd8_t_cell",
+      "sample": "sample00008",
+      "total_count": 90353
+    },
+    {
+      "count": 21307,
+      "percentage": 23.581951,
+      "population": "cd4_t_cell",
+      "sample": "sample00008",
+      "total_count": 90353
+    },
+    {
+      "count": 17624,
+      "percentage": 19.505716,
+      "population": "nk_cell",
+      "sample": "sample00008",
+      "total_count": 90353
+    },
+    {
+      "count": 16378,
+      "percentage": 18.126681,
+      "population": "monocyte",
+      "sample": "sample00008",
+      "total_count": 90353
+    },
+    {
+      "count": 7552,
+      "percentage": 7.554342,
+      "population": "b_cell",
+      "sample": "sample00024",
+      "total_count": 99969
+    },
+    {
+      "count": 27821,
+      "percentage": 27.829627,
+      "population": "cd8_t_cell",
+      "sample": "sample00024",
+      "total_count": 99969
+    },
+    {
+      "count": 35270,
+      "percentage": 35.280937,
+      "population": "cd4_t_cell",
+      "sample": "sample00024",
+      "total_count": 99969
+    },
+    {
+      "count": 19681,
+      "percentage": 19.687103,
+      "population": "nk_cell",
+      "sample": "sample00024",
+      "total_count": 99969
+    },
+    {
+      "count": 9645,
+      "percentage": 9.647991,
+      "population": "monocyte",
+      "sample": "sample00024",
+      "total_count": 99969
+    },
+    {
+      "count": 11714,
+      "percentage": 12.261603,
+      "population": "b_cell",
+      "sample": "sample00025",
+      "total_count": 95534
+    },
+    {
+      "count": 21407,
+      "percentage": 22.407729,
+      "population": "cd8_t_cell",
+      "sample": "sample00025",
+      "total_count": 95534
+    },
+    {
+      "count": 30323,
+      "percentage": 31.740532,
+      "population": "cd4_t_cell",
+      "sample": "sample00025",
+      "total_count": 95534
+    },
+    {
+      "count": 20301,
+      "percentage": 21.250026,
+      "population": "nk_cell",
+      "sample": "sample00025",
+      "total_count": 95534
+    },
+    {
+      "count": 11789,
+      "percentage": 12.340109,
+      "population": "monocyte",
+      "sample": "sample00025",
+      "total_count": 95534
+    },
+    {
+      "count": 7936,
+      "percentage": 8.285914,
+      "population": "b_cell",
+      "sample": "sample00026",
+      "total_count": 95777
+    },
+    {
+      "count": 23786,
+      "percentage": 24.834772,
+      "population": "cd8_t_cell",
+      "sample": "sample00026",
+      "total_count": 95777
+    },
+    {
+      "count": 34545,
+      "percentage": 36.068158,
+      "population": "cd4_t_cell",
+      "sample": "sample00026",
+      "total_count": 95777
+    },
+    {
+      "count": 13929,
+      "percentage": 14.543158,
+      "population": "nk_cell",
+      "sample": "sample00026",
+      "total_count": 95777
+    },
+    {
+      "count": 15581,
+      "percentage": 16.267998,
+      "population": "monocyte",
+      "sample": "sample00026",
+      "total_count": 95777
+    },
+    {
+      "count": 6413,
+      "percentage": 6.824373,
+      "population": "b_cell",
+      "sample": "sample00030",
+      "total_count": 93972
+    },
+    {
+      "count": 25167,
+      "percentage": 26.781382,
+      "population": "cd8_t_cell",
+      "sample": "sample00030",
+      "total_count": 93972
+    },
+    {
+      "count": 20437,
+      "percentage": 21.747967,
+      "population": "cd4_t_cell",
+      "sample": "sample00030",
+      "total_count": 93972
+    },
+    {
+      "count": 22317,
+      "percentage": 23.748563,
+      "population": "nk_cell",
+      "sample": "sample00030",
+      "total_count": 93972
+    },
+    {
+      "count": 19638,
+      "percentage": 20.897714,
+      "population": "monocyte",
+      "sample": "sample00030",
+      "total_count": 93972
+    },
+    {
+      "count": 7007,
+      "percentage": 6.57163,
+      "population": "b_cell",
+      "sample": "sample00031",
+      "total_count": 106625
+    },
+    {
+      "count": 30482,
+      "percentage": 28.588042,
+      "population": "cd8_t_cell",
+      "sample": "sample00031",
+      "total_count": 106625
+    },
+    {
+      "count": 31653,
+      "percentage": 29.686284,
+      "population": "cd4_t_cell",
+      "sample": "sample00031",
+      "total_count": 106625
+    },
+    {
+      "count": 14167,
+      "percentage": 13.286753,
+      "population": "nk_cell",
+      "sample": "sample00031",
+      "total_count": 106625
+    },
+    {
+      "count": 23316,
+      "percentage": 21.867292,
+      "population": "monocyte",
+      "sample": "sample00031",
+      "total_count": 106625
+    },
+    {
+      "count": 11118,
+      "percentage": 10.969149,
+      "population": "b_cell",
+      "sample": "sample00032",
+      "total_count": 101357
+    },
+    {
+      "count": 19704,
+      "percentage": 19.440197,
+      "population": "cd8_t_cell",
+      "sample": "sample00032",
+      "total_count": 101357
+    },
+    {
+      "count": 32582,
+      "percentage": 32.145782,
+      "population": "cd4_t_cell",
+      "sample": "sample00032",
+      "total_count": 101357
+    },
+    {
+      "count": 20603,
+      "percentage": 20.32716,
+      "population": "nk_cell",
+      "sample": "sample00032",
+      "total_count": 101357
+    },
+    {
+      "count": 17350,
+      "percentage": 17.117713,
+      "population": "monocyte",
+      "sample": "sample00032",
+      "total_count": 101357
+    },
+    {
+      "count": 11035,
+      "percentage": 10.658334,
+      "population": "b_cell",
+      "sample": "sample00060",
+      "total_count": 103534
+    },
+    {
+      "count": 21406,
+      "percentage": 20.675334,
+      "population": "cd8_t_cell",
+      "sample": "sample00060",
+      "total_count": 103534
+    },
+    {
+      "count": 38817,
+      "percentage": 37.492032,
+      "population": "cd4_t_cell",
+      "sample": "sample00060",
+      "total_count": 103534
+    },
+    {
+      "count": 14559,
+      "percentage": 14.062047,
+      "population": "nk_cell",
+      "sample": "sample00060",
+      "total_count": 103534
+    },
+    {
+      "count": 17717,
+      "percentage": 17.112253,
+      "population": "monocyte",
+      "sample": "sample00060",
+      "total_count": 103534
+    },
+    {
+      "count": 4508,
+      "percentage": 4.026078,
+      "population": "b_cell",
+      "sample": "sample00061",
+      "total_count": 111970
+    },
+    {
+      "count": 34867,
+      "percentage": 31.139591,
+      "population": "cd8_t_cell",
+      "sample": "sample00061",
+      "total_count": 111970
+    },
+    {
+      "count": 38281,
+      "percentage": 34.188622,
+      "population": "cd4_t_cell",
+      "sample": "sample00061",
+      "total_count": 111970
+    },
+    {
+      "count": 16013,
+      "percentage": 14.301152,
+      "population": "nk_cell",
+      "sample": "sample00061",
+      "total_count": 111970
+    },
+    {
+      "count": 18301,
+      "percentage": 16.344557,
+      "population": "monocyte",
+      "sample": "sample00061",
+      "total_count": 111970
+    },
+    {
+      "count": 10066,
+      "percentage": 10.563986,
+      "population": "b_cell",
+      "sample": "sample00062",
+      "total_count": 95286
+    },
+    {
+      "count": 20104,
+      "percentage": 21.098587,
+      "population": "cd8_t_cell",
+      "sample": "sample00062",
+      "total_count": 95286
+    },
+    {
+      "count": 21554,
+      "percentage": 22.620322,
+      "population": "cd4_t_cell",
+      "sample": "sample00062",
+      "total_count": 95286
+    },
+    {
+      "count": 17505,
+      "percentage": 18.371009,
+      "population": "nk_cell",
+      "sample": "sample00062",
+      "total_count": 95286
+    },
+    {
+      "count": 26057,
+      "percentage": 27.346095,
+      "population": "monocyte",
+      "sample": "sample00062",
+      "total_count": 95286
+    }
+  ],
+  "meta": {
+    "conditions": [
+      "healthy",
+      "melanoma"
+    ],
+    "generated_at": "2026-08-30T00:00:00Z",
+    "n_projects": 1,
+    "n_rows": 15,
+    "n_samples": 15,
+    "n_subjects": 5,
+    "populations": [
+      {
+        "display_name": "B cells",
+        "name": "b_cell",
+        "sort_order": 0
+      },
+      {
+        "display_name": "CD8 T cells",
+        "name": "cd8_t_cell",
+        "sort_order": 1
+      },
+      {
+        "display_name": "CD4 T cells",
+        "name": "cd4_t_cell",
+        "sort_order": 2
+      },
+      {
+        "display_name": "NK cells",
+        "name": "nk_cell",
+        "sort_order": 3
+      },
+      {
+        "display_name": "Monocytes",
+        "name": "monocyte",
+        "sort_order": 4
+      }
+    ],
+    "sample_types": [
+      "PBMC"
+    ],
+    "source_file": "data/cell-count.csv",
+    "source_sha256": "011373475d37417d4131d4a06efeb58df89c4adc76451a5efa48a535ed293c82",
+    "time_points": [
+      0,
+      7,
+      14
+    ],
+    "treatments": [
+      "miraclib",
+      "none"
+    ]
+  },
+  "response_analysis": {
+    "by_sample": {
+      "adjustment": "Benjamini-Hochberg",
+      "alpha": 0.05,
+      "method": "Mann-Whitney U (two-sided)",
+      "n_samples": 12,
+      "n_subjects": 4,
+      "rows": [
+        {
+          "effect_size": -0.05555555555555558,
+          "iqr_no": [
+            7.484128757522405,
+            10.56502687106288
+          ],
+          "iqr_yes": [
+            7.7372349231680175,
+            10.634747423853904
+          ],
+          "mean_no": 9.204450650185876,
+          "mean_yes": 8.89170973141842,
+          "median_no": 10.16152561591668,
+          "median_yes": 9.424950234819466,
+          "n_no": 6,
+          "n_yes": 6,
+          "p_value": 0.9372294372294373,
+          "population": "b_cell",
+          "q_value": 1.0,
+          "sd_no": 2.3346660697508193,
+          "sd_yes": 2.9361050099036285,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": 19.0,
+          "welch_p": 0.8424845706682675
+        },
+        {
+          "effect_size": 0.0,
+          "iqr_no": [
+            20.614787097583672,
+            28.315293243293652
+          ],
+          "iqr_yes": [
+            21.4258728542546,
+            27.080913498357237
+          ],
+          "mean_no": 24.047116313096822,
+          "mean_yes": 24.664273481532405,
+          "median_no": 25.46660306241079,
+          "median_yes": 23.62125081278416,
+          "n_no": 6,
+          "n_yes": 6,
+          "p_value": 1.0,
+          "population": "cd8_t_cell",
+          "q_value": 1.0,
+          "sd_no": 6.528152936098587,
+          "sd_yes": 4.139952180257202,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": 18.0,
+          "welch_p": 0.8495692065666048
+        },
+        {
+          "effect_size": -0.5555555555555556,
+          "iqr_no": [
+            24.22424508608885,
+            31.984949771892715
+          ],
+          "iqr_yes": [
+            32.352554612996045,
+            35.87135301720829
+          ],
+          "mean_no": 27.949477258971495,
+          "mean_yes": 32.898433852777806,
+          "median_no": 27.267136937554547,
+          "median_yes": 34.734779521403354,
+          "n_no": 6,
+          "n_yes": 6,
+          "p_value": 0.13203463203463203,
+          "population": "cd4_t_cell",
+          "q_value": 0.3300865800865801,
+          "sd_no": 5.045479193349008,
+          "sd_yes": 5.393876538509566,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": 28.0,
+          "welch_p": 0.13190344435408358
+        },
+        {
+          "effect_size": 0.11111111111111116,
+          "iqr_no": [
+            15.660352424432572,
+            19.337761634838063
+          ],
+          "iqr_yes": [
+            14.361653456493904,
+            19.358079597018126
+          ],
+          "mean_no": 17.816203579476223,
+          "mean_yes": 17.03574924007292,
+          "median_no": 18.427699976622186,
+          "median_yes": 16.4570834626617,
+          "n_no": 6,
+          "n_yes": 6,
+          "p_value": 0.8181818181818182,
+          "population": "nk_cell",
+          "q_value": 1.0,
+          "sd_no": 3.621358145462718,
+          "sd_yes": 3.1339006012127055,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": 16.0,
+          "welch_p": 0.6983225229717314
+        },
+        {
+          "effect_size": 0.6666666666666667,
+          "iqr_no": [
+            18.677196156053213,
+            22.530939278279504
+          ],
+          "iqr_yes": [
+            13.322081344334912,
+            16.9203288791868
+          ],
+          "mean_no": 20.98275219826959,
+          "mean_yes": 16.509833694198456,
+          "median_no": 20.702284242822294,
+          "median_yes": 16.3062770567988,
+          "n_no": 6,
+          "n_yes": 6,
+          "p_value": 0.06493506493506493,
+          "population": "monocyte",
+          "q_value": 0.3246753246753247,
+          "sd_no": 2.7779117871518193,
+          "sd_yes": 6.038952823290833,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": 6.0,
+          "welch_p": 0.14313531406496452
+        }
+      ],
+      "unit": "sample"
+    },
+    "by_subject": {
+      "adjustment": "Benjamini-Hochberg",
+      "alpha": 0.05,
+      "method": "Mann-Whitney U (two-sided)",
+      "n_samples": 12,
+      "n_subjects": 4,
+      "rows": [
+        {
+          "effect_size": null,
+          "iqr_no": null,
+          "iqr_yes": null,
+          "mean_no": null,
+          "mean_yes": null,
+          "median_no": null,
+          "median_yes": null,
+          "n_no": 2,
+          "n_yes": 2,
+          "p_value": null,
+          "population": "b_cell",
+          "q_value": null,
+          "sd_no": null,
+          "sd_yes": null,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": null,
+          "welch_p": null
+        },
+        {
+          "effect_size": null,
+          "iqr_no": null,
+          "iqr_yes": null,
+          "mean_no": null,
+          "mean_yes": null,
+          "median_no": null,
+          "median_yes": null,
+          "n_no": 2,
+          "n_yes": 2,
+          "p_value": null,
+          "population": "cd8_t_cell",
+          "q_value": null,
+          "sd_no": null,
+          "sd_yes": null,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": null,
+          "welch_p": null
+        },
+        {
+          "effect_size": null,
+          "iqr_no": null,
+          "iqr_yes": null,
+          "mean_no": null,
+          "mean_yes": null,
+          "median_no": null,
+          "median_yes": null,
+          "n_no": 2,
+          "n_yes": 2,
+          "p_value": null,
+          "population": "cd4_t_cell",
+          "q_value": null,
+          "sd_no": null,
+          "sd_yes": null,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": null,
+          "welch_p": null
+        },
+        {
+          "effect_size": null,
+          "iqr_no": null,
+          "iqr_yes": null,
+          "mean_no": null,
+          "mean_yes": null,
+          "median_no": null,
+          "median_yes": null,
+          "n_no": 2,
+          "n_yes": 2,
+          "p_value": null,
+          "population": "nk_cell",
+          "q_value": null,
+          "sd_no": null,
+          "sd_yes": null,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": null,
+          "welch_p": null
+        },
+        {
+          "effect_size": null,
+          "iqr_no": null,
+          "iqr_yes": null,
+          "mean_no": null,
+          "mean_yes": null,
+          "median_no": null,
+          "median_yes": null,
+          "n_no": 2,
+          "n_yes": 2,
+          "p_value": null,
+          "population": "monocyte",
+          "q_value": null,
+          "sd_no": null,
+          "sd_yes": null,
+          "significant_adjusted": false,
+          "significant_raw": false,
+          "u_statistic": null,
+          "welch_p": null
+        }
+      ],
+      "unit": "subject"
+    },
+    "by_time": [
+      {
+        "comparison": {
+          "adjustment": "Benjamini-Hochberg",
+          "alpha": 0.05,
+          "method": "Mann-Whitney U (two-sided)",
+          "n_samples": 4,
+          "n_subjects": 4,
+          "rows": [
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "b_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd8_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd4_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "nk_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "monocyte",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            }
+          ],
+          "unit": "sample"
+        },
+        "time": 0
+      },
+      {
+        "comparison": {
+          "adjustment": "Benjamini-Hochberg",
+          "alpha": 0.05,
+          "method": "Mann-Whitney U (two-sided)",
+          "n_samples": 4,
+          "n_subjects": 4,
+          "rows": [
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "b_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd8_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd4_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "nk_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "monocyte",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            }
+          ],
+          "unit": "sample"
+        },
+        "time": 7
+      },
+      {
+        "comparison": {
+          "adjustment": "Benjamini-Hochberg",
+          "alpha": 0.05,
+          "method": "Mann-Whitney U (two-sided)",
+          "n_samples": 4,
+          "n_subjects": 4,
+          "rows": [
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "b_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd8_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "cd4_t_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "nk_cell",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            },
+            {
+              "effect_size": null,
+              "iqr_no": null,
+              "iqr_yes": null,
+              "mean_no": null,
+              "mean_yes": null,
+              "median_no": null,
+              "median_yes": null,
+              "n_no": 2,
+              "n_yes": 2,
+              "p_value": null,
+              "population": "monocyte",
+              "q_value": null,
+              "sd_no": null,
+              "sd_yes": null,
+              "significant_adjusted": false,
+              "significant_raw": false,
+              "u_statistic": null,
+              "welch_p": null
+            }
+          ],
+          "unit": "sample"
+        },
+        "time": 14
+      }
+    ],
+    "cohort": {
+      "condition": "melanoma",
+      "sample_type": "PBMC",
+      "treatment": "miraclib"
+    },
+    "distributions": [
+      {
+        "points": [
+          {
+            "percentage": 7.554342,
+            "sample": "sample00024",
+            "subject": "sbj008",
+            "time": 0
+          },
+          {
+            "percentage": 12.261603,
+            "sample": "sample00025",
+            "subject": "sbj008",
+            "time": 7
+          },
+          {
+            "percentage": 8.285914,
+            "sample": "sample00026",
+            "subject": "sbj008",
+            "time": 14
+          },
+          {
+            "percentage": 10.658334,
+            "sample": "sample00060",
+            "subject": "sbj020",
+            "time": 0
+          },
+          {
+            "percentage": 4.026078,
+            "sample": "sample00061",
+            "subject": "sbj020",
+            "time": 7
+          },
+          {
+            "percentage": 10.563986,
+            "sample": "sample00062",
+            "subject": "sbj020",
+            "time": 14
+          }
+        ],
+        "population": "b_cell",
+        "response": "yes"
+      },
+      {
+        "points": [
+          {
+            "percentage": 11.702105,
+            "sample": "sample00000",
+            "subject": "sbj000",
+            "time": 0
+          },
+          {
+            "percentage": 6.721614,
+            "sample": "sample00001",
+            "subject": "sbj000",
+            "time": 7
+          },
+          {
+            "percentage": 10.551378,
+            "sample": "sample00002",
+            "subject": "sbj000",
+            "time": 14
+          },
+          {
+            "percentage": 5.910357,
+            "sample": "sample00006",
+            "subject": "sbj002",
+            "time": 0
+          },
+          {
+            "percentage": 10.569577,
+            "sample": "sample00007",
+            "subject": "sbj002",
+            "time": 7
+          },
+          {
+            "percentage": 9.771673,
+            "sample": "sample00008",
+            "subject": "sbj002",
+            "time": 14
+          }
+        ],
+        "population": "b_cell",
+        "response": "no"
+      },
+      {
+        "points": [
+          {
+            "percentage": 27.829627,
+            "sample": "sample00024",
+            "subject": "sbj008",
+            "time": 0
+          },
+          {
+            "percentage": 22.407729,
+            "sample": "sample00025",
+            "subject": "sbj008",
+            "time": 7
+          },
+          {
+            "percentage": 24.834772,
+            "sample": "sample00026",
+            "subject": "sbj008",
+            "time": 14
+          },
+          {
+            "percentage": 20.675334,
+            "sample": "sample00060",
+            "subject": "sbj020",
+            "time": 0
+          },
+          {
+            "percentage": 31.139591,
+            "sample": "sample00061",
+            "subject": "sbj020",
+            "time": 7
+          },
+          {
+            "percentage": 21.098587,
+            "sample": "sample00062",
+            "subject": "sbj020",
+            "time": 14
+          }
+        ],
+        "population": "cd8_t_cell",
+        "response": "yes"
+      },
+      {
+        "points": [
+          {
+            "percentage": 26.219237,
+            "sample": "sample00000",
+            "subject": "sbj000",
+            "time": 0
+          },
+          {
+            "percentage": 19.248393,
+            "sample": "sample00001",
+            "subject": "sbj000",
+            "time": 7
+          },
+          {
+            "percentage": 24.713969,
+            "sample": "sample00002",
+            "subject": "sbj000",
+            "time": 14
+          },
+          {
+            "percentage": 31.366889,
+            "sample": "sample00006",
+            "subject": "sbj002",
+            "time": 0
+          },
+          {
+            "percentage": 13.720231,
+            "sample": "sample00007",
+            "subject": "sbj002",
+            "time": 7
+          },
+          {
+            "percentage": 29.013979,
+            "sample": "sample00008",
+            "subject": "sbj002",
+            "time": 14
+          }
+        ],
+        "population": "cd8_t_cell",
+        "response": "no"
+      },
+      {
+        "points": [
+          {
+            "percentage": 35.280937,
+            "sample": "sample00024",
+            "subject": "sbj008",
+            "time": 0
+          },
+          {
+            "percentage": 31.740532,
+            "sample": "sample00025",
+            "subject": "sbj008",
+            "time": 7
+          },
+          {
+            "percentage": 36.068158,
+            "sample": "sample00026",
+            "subject": "sbj008",
+            "time": 14
+          },
+          {
+            "percentage": 37.492032,
+            "sample": "sample00060",
+            "subject": "sbj020",
+            "time": 0
+          },
+          {
+            "percentage": 34.188622,
+            "sample": "sample00061",
+            "subject": "sbj020",
+            "time": 7
+          },
+          {
+            "percentage": 22.620322,
+            "sample": "sample00062",
+            "subject": "sbj020",
+            "time": 14
+          }
+        ],
+        "population": "cd4_t_cell",
+        "response": "yes"
+      },
+      {
+        "points": [
+          {
+            "percentage": 21.982749,
+            "sample": "sample00000",
+            "subject": "sbj000",
+            "time": 0
+          },
+          {
+            "percentage": 33.185551,
+            "sample": "sample00001",
+            "subject": "sbj000",
+            "time": 7
+          },
+          {
+            "percentage": 26.151128,
+            "sample": "sample00002",
+            "subject": "sbj000",
+            "time": 14
+          },
+          {
+            "percentage": 28.383146,
+            "sample": "sample00006",
+            "subject": "sbj002",
+            "time": 0
+          },
+          {
+            "percentage": 34.412338,
+            "sample": "sample00007",
+            "subject": "sbj002",
+            "time": 7
+          },
+          {
+            "percentage": 23.581951,
+            "sample": "sample00008",
+            "subject": "sbj002",
+            "time": 14
+          }
+        ],
+        "population": "cd4_t_cell",
+        "response": "no"
+      },
+      {
+        "points": [
+          {
+            "percentage": 19.687103,
+            "sample": "sample00024",
+            "subject": "sbj008",
+            "time": 0
+          },
+          {
+            "percentage": 21.250026,
+            "sample": "sample00025",
+            "subject": "sbj008",
+            "time": 7
+          },
+          {
+            "percentage": 14.543158,
+            "sample": "sample00026",
+            "subject": "sbj008",
+            "time": 14
+          },
+          {
+            "percentage": 14.062047,
+            "sample": "sample00060",
+            "subject": "sbj020",
+            "time": 0
+          },
+          {
+            "percentage": 14.301152,
+            "sample": "sample00061",
+            "subject": "sbj020",
+            "time": 7
+          },
+          {
+            "percentage": 18.371009,
+            "sample": "sample00062",
+            "subject": "sbj020",
+            "time": 14
+          }
+        ],
+        "population": "nk_cell",
+        "response": "yes"
+      },
+      {
+        "points": [
+          {
+            "percentage": 14.873302,
+            "sample": "sample00000",
+            "subject": "sbj000",
+            "time": 0
+          },
+          {
+            "percentage": 18.021503,
+            "sample": "sample00001",
+            "subject": "sbj000",
+            "time": 7
+          },
+          {
+            "percentage": 18.833897,
+            "sample": "sample00002",
+            "subject": "sbj000",
+            "time": 14
+          },
+          {
+            "percentage": 12.684667,
+            "sample": "sample00006",
+            "subject": "sbj002",
+            "time": 0
+          },
+          {
+            "percentage": 22.978135,
+            "sample": "sample00007",
+            "subject": "sbj002",
+            "time": 7
+          },
+          {
+            "percentage": 19.505716,
+            "sample": "sample00008",
+            "subject": "sbj002",
+            "time": 14
+          }
+        ],
+        "population": "nk_cell",
+        "response": "no"
+      },
+      {
+        "points": [
+          {
+            "percentage": 9.647991,
+            "sample": "sample00024",
+            "subject": "sbj008",
+            "time": 0
+          },
+          {
+            "percentage": 12.340109,
+            "sample": "sample00025",
+            "subject": "sbj008",
+            "time": 7
+          },
+          {
+            "percentage": 16.267998,
+            "sample": "sample00026",
+            "subject": "sbj008",
+            "time": 14
+          },
+          {
+            "percentage": 17.112253,
+            "sample": "sample00060",
+            "subject": "sbj020",
+            "time": 0
+          },
+          {
+            "percentage": 16.344557,
+            "sample": "sample00061",
+            "subject": "sbj020",
+            "time": 7
+          },
+          {
+            "percentage": 27.346095,
+            "sample": "sample00062",
+            "subject": "sbj020",
+            "time": 14
+          }
+        ],
+        "population": "monocyte",
+        "response": "yes"
+      },
+      {
+        "points": [
+          {
+            "percentage": 25.222606,
+            "sample": "sample00000",
+            "subject": "sbj000",
+            "time": 0
+          },
+          {
+            "percentage": 22.822939,
+            "sample": "sample00001",
+            "subject": "sbj000",
+            "time": 7
+          },
+          {
+            "percentage": 19.749628,
+            "sample": "sample00002",
+            "subject": "sbj000",
+            "time": 14
+          },
+          {
+            "percentage": 21.65494,
+            "sample": "sample00006",
+            "subject": "sbj002",
+            "time": 0
+          },
+          {
+            "percentage": 18.319719,
+            "sample": "sample00007",
+            "subject": "sbj002",
+            "time": 7
+          },
+          {
+            "percentage": 18.126681,
+            "sample": "sample00008",
+            "subject": "sbj002",
+            "time": 14
+          }
+        ],
+        "population": "monocyte",
+        "response": "no"
+      }
+    ],
+    "n": {
+      "samples_no": 6,
+      "samples_yes": 6,
+      "subjects_no": 2,
+      "subjects_yes": 2
+    }
+  },
+  "run": {
+    "library_versions": {
+      "numpy": "2.4.4",
+      "pandas": "3.0.2"
+    },
+    "pipeline_version": "0.1.0",
+    "python_version": "3.12",
+    "stages": [
+      {
+        "name": "load_database",
+        "rows_in": 15,
+        "rows_out": 75,
+        "seconds": 0.42
+      },
+      {
+        "name": "cell_frequencies",
+        "rows_in": 75,
+        "rows_out": 75,
+        "seconds": 0.05
+      }
+    ],
+    "warnings": [
+      "fixture: subset of the real data for dashboard development"
+    ]
+  },
+  "samples": [
+    {
+      "age": 57,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 10908,
+        "cd4_t_cell": 20491,
+        "cd8_t_cell": 24440,
+        "monocyte": 23511,
+        "nk_cell": 13864
+      },
+      "percentages": {
+        "b_cell": 11.702105,
+        "cd4_t_cell": 21.982749,
+        "cd8_t_cell": 26.219237,
+        "monocyte": 25.222606,
+        "nk_cell": 14.873302
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00000",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj000",
+      "time": 0,
+      "total_count": 93214,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 57,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 6777,
+        "cd4_t_cell": 33459,
+        "cd8_t_cell": 19407,
+        "monocyte": 23011,
+        "nk_cell": 18170
+      },
+      "percentages": {
+        "b_cell": 6.721614,
+        "cd4_t_cell": 33.185551,
+        "cd8_t_cell": 19.248393,
+        "monocyte": 22.822939,
+        "nk_cell": 18.021503
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00001",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj000",
+      "time": 7,
+      "total_count": 100824,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 57,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 9794,
+        "cd4_t_cell": 24274,
+        "cd8_t_cell": 22940,
+        "monocyte": 18332,
+        "nk_cell": 17482
+      },
+      "percentages": {
+        "b_cell": 10.551378,
+        "cd4_t_cell": 26.151128,
+        "cd8_t_cell": 24.713969,
+        "monocyte": 19.749628,
+        "nk_cell": 18.833897
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00002",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj000",
+      "time": 14,
+      "total_count": 92822,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 50,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 5897,
+        "cd4_t_cell": 28319,
+        "cd8_t_cell": 31296,
+        "monocyte": 21606,
+        "nk_cell": 12656
+      },
+      "percentages": {
+        "b_cell": 5.910357,
+        "cd4_t_cell": 28.383146,
+        "cd8_t_cell": 31.366889,
+        "monocyte": 21.65494,
+        "nk_cell": 12.684667
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00006",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj002",
+      "time": 0,
+      "total_count": 99774,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 50,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 10403,
+        "cd4_t_cell": 33870,
+        "cd8_t_cell": 13504,
+        "monocyte": 18031,
+        "nk_cell": 22616
+      },
+      "percentages": {
+        "b_cell": 10.569577,
+        "cd4_t_cell": 34.412338,
+        "cd8_t_cell": 13.720231,
+        "monocyte": 18.319719,
+        "nk_cell": 22.978135
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00007",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj002",
+      "time": 7,
+      "total_count": 98424,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 50,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 8829,
+        "cd4_t_cell": 21307,
+        "cd8_t_cell": 26215,
+        "monocyte": 16378,
+        "nk_cell": 17624
+      },
+      "percentages": {
+        "b_cell": 9.771673,
+        "cd4_t_cell": 23.581951,
+        "cd8_t_cell": 29.013979,
+        "monocyte": 18.126681,
+        "nk_cell": 19.505716
+      },
+      "project": "prj1",
+      "response": "no",
+      "sample": "sample00008",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj002",
+      "time": 14,
+      "total_count": 90353,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 53,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 7552,
+        "cd4_t_cell": 35270,
+        "cd8_t_cell": 27821,
+        "monocyte": 9645,
+        "nk_cell": 19681
+      },
+      "percentages": {
+        "b_cell": 7.554342,
+        "cd4_t_cell": 35.280937,
+        "cd8_t_cell": 27.829627,
+        "monocyte": 9.647991,
+        "nk_cell": 19.687103
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00024",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj008",
+      "time": 0,
+      "total_count": 99969,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 53,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 11714,
+        "cd4_t_cell": 30323,
+        "cd8_t_cell": 21407,
+        "monocyte": 11789,
+        "nk_cell": 20301
+      },
+      "percentages": {
+        "b_cell": 12.261603,
+        "cd4_t_cell": 31.740532,
+        "cd8_t_cell": 22.407729,
+        "monocyte": 12.340109,
+        "nk_cell": 21.250026
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00025",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj008",
+      "time": 7,
+      "total_count": 95534,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 53,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 7936,
+        "cd4_t_cell": 34545,
+        "cd8_t_cell": 23786,
+        "monocyte": 15581,
+        "nk_cell": 13929
+      },
+      "percentages": {
+        "b_cell": 8.285914,
+        "cd4_t_cell": 36.068158,
+        "cd8_t_cell": 24.834772,
+        "monocyte": 16.267998,
+        "nk_cell": 14.543158
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00026",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj008",
+      "time": 14,
+      "total_count": 95777,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 70,
+      "condition": "healthy",
+      "counts": {
+        "b_cell": 6413,
+        "cd4_t_cell": 20437,
+        "cd8_t_cell": 25167,
+        "monocyte": 19638,
+        "nk_cell": 22317
+      },
+      "percentages": {
+        "b_cell": 6.824373,
+        "cd4_t_cell": 21.747967,
+        "cd8_t_cell": 26.781382,
+        "monocyte": 20.897714,
+        "nk_cell": 23.748563
+      },
+      "project": "prj1",
+      "response": null,
+      "sample": "sample00030",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj010",
+      "time": 0,
+      "total_count": 93972,
+      "treatment": "none"
+    },
+    {
+      "age": 70,
+      "condition": "healthy",
+      "counts": {
+        "b_cell": 7007,
+        "cd4_t_cell": 31653,
+        "cd8_t_cell": 30482,
+        "monocyte": 23316,
+        "nk_cell": 14167
+      },
+      "percentages": {
+        "b_cell": 6.57163,
+        "cd4_t_cell": 29.686284,
+        "cd8_t_cell": 28.588042,
+        "monocyte": 21.867292,
+        "nk_cell": 13.286753
+      },
+      "project": "prj1",
+      "response": null,
+      "sample": "sample00031",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj010",
+      "time": 7,
+      "total_count": 106625,
+      "treatment": "none"
+    },
+    {
+      "age": 70,
+      "condition": "healthy",
+      "counts": {
+        "b_cell": 11118,
+        "cd4_t_cell": 32582,
+        "cd8_t_cell": 19704,
+        "monocyte": 17350,
+        "nk_cell": 20603
+      },
+      "percentages": {
+        "b_cell": 10.969149,
+        "cd4_t_cell": 32.145782,
+        "cd8_t_cell": 19.440197,
+        "monocyte": 17.117713,
+        "nk_cell": 20.32716
+      },
+      "project": "prj1",
+      "response": null,
+      "sample": "sample00032",
+      "sample_type": "PBMC",
+      "sex": "M",
+      "subject": "sbj010",
+      "time": 14,
+      "total_count": 101357,
+      "treatment": "none"
+    },
+    {
+      "age": 62,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 11035,
+        "cd4_t_cell": 38817,
+        "cd8_t_cell": 21406,
+        "monocyte": 17717,
+        "nk_cell": 14559
+      },
+      "percentages": {
+        "b_cell": 10.658334,
+        "cd4_t_cell": 37.492032,
+        "cd8_t_cell": 20.675334,
+        "monocyte": 17.112253,
+        "nk_cell": 14.062047
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00060",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj020",
+      "time": 0,
+      "total_count": 103534,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 62,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 4508,
+        "cd4_t_cell": 38281,
+        "cd8_t_cell": 34867,
+        "monocyte": 18301,
+        "nk_cell": 16013
+      },
+      "percentages": {
+        "b_cell": 4.026078,
+        "cd4_t_cell": 34.188622,
+        "cd8_t_cell": 31.139591,
+        "monocyte": 16.344557,
+        "nk_cell": 14.301152
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00061",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj020",
+      "time": 7,
+      "total_count": 111970,
+      "treatment": "miraclib"
+    },
+    {
+      "age": 62,
+      "condition": "melanoma",
+      "counts": {
+        "b_cell": 10066,
+        "cd4_t_cell": 21554,
+        "cd8_t_cell": 20104,
+        "monocyte": 26057,
+        "nk_cell": 17505
+      },
+      "percentages": {
+        "b_cell": 10.563986,
+        "cd4_t_cell": 22.620322,
+        "cd8_t_cell": 21.098587,
+        "monocyte": 27.346095,
+        "nk_cell": 18.371009
+      },
+      "project": "prj1",
+      "response": "yes",
+      "sample": "sample00062",
+      "sample_type": "PBMC",
+      "sex": "F",
+      "subject": "sbj020",
+      "time": 14,
+      "total_count": 95286,
+      "treatment": "miraclib"
+    }
+  ],
+  "schema_version": "1.0"
+}

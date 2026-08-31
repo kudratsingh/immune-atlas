@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kudratsingh/immune-atlas/contracts/dashboard-bundle.schema.json",
+  "title": "DashboardBundle",
+  "description": "Everything the dashboard renders. Written by immune_atlas.export, read by dashboard/src/lib/bundle.ts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "meta", "samples", "frequencies_long", "response_analysis", "baseline_subset", "form_answer", "run"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "meta": { "$ref": "#/$defs/Meta" },
+    "samples": { "type": "array", "items": { "$ref": "#/$defs/Sample" } },
+    "frequencies_long": { "type": "array", "items": { "$ref": "#/$defs/FrequencyRow" } },
+    "response_analysis": { "$ref": "#/$defs/ResponseAnalysis" },
+    "baseline_subset": { "$ref": "#/$defs/BaselineSubset" },
+    "form_answer": { "$ref": "#/$defs/FormAnswer" },
+    "run": { "$ref": "#/$defs/RunReport" }
+  },
+  "$defs": {
+    "Population": {
+      "type": "string",
+      "enum": ["b_cell", "cd8_t_cell", "cd4_t_cell", "nk_cell", "monocyte"]
+    },
+    "Response": { "type": "string", "enum": ["yes", "no"] },
+    "Sex": { "type": "string", "enum": ["M", "F"] },
+    "NonNegativeInt": { "type": "integer", "minimum": 0 },
+    "Percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+    "NullableNumber": { "type": ["number", "null"] },
+
+    "PopulationInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "display_name", "sort_order"],
+      "properties": {
+        "name": { "$ref": "#/$defs/Population" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "sort_order": { "$ref": "#/$defs/NonNegativeInt" }
+      }
+    },
+
+    "Meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_at", "source_file", "source_sha256", "n_rows", "n_samples", "n_subjects", "n_projects", "populations", "time_points", "conditions", "treatments", "sample_types"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "source_file": { "type": "string" },
+        "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "n_rows": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_samples": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_subjects": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_projects": { "$ref": "#/$defs/NonNegativeInt" },
+        "populations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/PopulationInfo" } },
+        "time_points": { "type": "array", "items": { "$ref": "#/$defs/NonNegativeInt" } },
+        "conditions": { "type": "array", "items": { "type": "string" } },
+        "treatments": { "type": "array", "items": { "type": "string" } },
+        "sample_types": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "CountsByPopulation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b_cell", "cd8_t_cell", "cd4_t_cell", "nk_cell", "monocyte"],
+      "properties": {
+        "b_cell": { "$ref": "#/$defs/NonNegativeInt" },
+        "cd8_t_cell": { "$ref": "#/$defs/NonNegativeInt" },
+        "cd4_t_cell": { "$ref": "#/$defs/NonNegativeInt" },
+        "nk_cell": { "$ref": "#/$defs/NonNegativeInt" },
+        "monocyte": { "$ref": "#/$defs/NonNegativeInt" }
+      }
+    },
+    "PercentagesByPopulation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b_cell", "cd8_t_cell", "cd4_t_cell", "nk_cell", "monocyte"],
+      "properties": {
+        "b_cell": { "$ref": "#/$defs/Percentage" },
+        "cd8_t_cell": { "$ref": "#/$defs/Percentage" },
+        "cd4_t_cell": { "$ref": "#/$defs/Percentage" },
+        "nk_cell": { "$ref": "#/$defs/Percentage" },
+        "monocyte": { "$ref": "#/$defs/Percentage" }
+      }
+    },
+
+    "Sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample", "subject", "project", "condition", "age", "sex", "treatment", "response", "sample_type", "time", "total_count", "counts", "percentages"],
+      "properties": {
+        "sample": { "type": "string", "minLength": 1 },
+        "subject": { "type": "string", "minLength": 1 },
+        "project": { "type": "string", "minLength": 1 },
+        "condition": { "type": "string", "minLength": 1 },
+        "age": { "$ref": "#/$defs/NonNegativeInt" },
+        "sex": { "$ref": "#/$defs/Sex" },
+        "treatment": { "type": "string", "minLength": 1 },
+        "response": { "oneOf": [{ "$ref": "#/$defs/Response" }, { "type": "null" }] },
+        "sample_type": { "type": "string", "minLength": 1 },
+        "time": { "$ref": "#/$defs/NonNegativeInt" },
+        "total_count": { "type": "integer", "minimum": 1 },
+        "counts": { "$ref": "#/$defs/CountsByPopulation" },
+        "percentages": { "$ref": "#/$defs/PercentagesByPopulation" }
+      }
+    },
+
+    "FrequencyRow": {
+      "description": "One row of the Part 2 summary table, column names as required by the assignment.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample", "total_count", "population", "count", "percentage"],
+      "properties": {
+        "sample": { "type": "string", "minLength": 1 },
+        "total_count": { "type": "integer", "minimum": 1 },
+        "population": { "$ref": "#/$defs/Population" },
+        "count": { "$ref": "#/$defs/NonNegativeInt" },
+        "percentage": { "$ref": "#/$defs/Percentage" }
+      }
+    },
+
+    "CohortFilter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition", "treatment", "sample_type"],
+      "properties": {
+        "condition": { "type": "string" },
+        "treatment": { "type": "string" },
+        "sample_type": { "type": "string" },
+        "time": { "$ref": "#/$defs/NonNegativeInt" }
+      }
+    },
+
+    "GroupCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples_yes", "samples_no", "subjects_yes", "subjects_no"],
+      "properties": {
+        "samples_yes": { "$ref": "#/$defs/NonNegativeInt" },
+        "samples_no": { "$ref": "#/$defs/NonNegativeInt" },
+        "subjects_yes": { "$ref": "#/$defs/NonNegativeInt" },
+        "subjects_no": { "$ref": "#/$defs/NonNegativeInt" }
+      }
+    },
+
+    "ComparisonRow": {
+      "description": "Statistics for one population. Numeric fields are null when a group has fewer than three values.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["population", "n_yes", "n_no", "mean_yes", "mean_no", "sd_yes", "sd_no", "median_yes", "median_no", "iqr_yes", "iqr_no", "u_statistic", "p_value", "q_value", "effect_size", "welch_p", "significant_raw", "significant_adjusted"],
+      "properties": {
+        "population": { "$ref": "#/$defs/Population" },
+        "n_yes": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_no": { "$ref": "#/$defs/NonNegativeInt" },
+        "mean_yes": { "$ref": "#/$defs/NullableNumber" },
+        "mean_no": { "$ref": "#/$defs/NullableNumber" },
+        "sd_yes": { "$ref": "#/$defs/NullableNumber" },
+        "sd_no": { "$ref": "#/$defs/NullableNumber" },
+        "median_yes": { "$ref": "#/$defs/NullableNumber" },
+        "median_no": { "$ref": "#/$defs/NullableNumber" },
+        "iqr_yes": { "$ref": "#/$defs/Interval" },
+        "iqr_no": { "$ref": "#/$defs/Interval" },
+        "u_statistic": { "$ref": "#/$defs/NullableNumber" },
+        "p_value": { "$ref": "#/$defs/NullableNumber" },
+        "q_value": { "$ref": "#/$defs/NullableNumber" },
+        "effect_size": { "description": "Rank-biserial correlation; positive means responders higher.", "$ref": "#/$defs/NullableNumber" },
+        "welch_p": { "$ref": "#/$defs/NullableNumber" },
+        "significant_raw": { "type": "boolean" },
+        "significant_adjusted": { "type": "boolean" }
+      }
+    },
+    "Interval": {
+      "oneOf": [
+        { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        { "type": "null" }
+      ]
+    },
+
+    "Comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "alpha", "method", "adjustment", "n_samples", "n_subjects", "rows"],
+      "properties": {
+        "unit": { "type": "string", "enum": ["sample", "subject"] },
+        "alpha": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 },
+        "method": { "type": "string" },
+        "adjustment": { "type": "string" },
+        "n_samples": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_subjects": { "$ref": "#/$defs/NonNegativeInt" },
+        "rows": { "type": "array", "items": { "$ref": "#/$defs/ComparisonRow" } }
+      }
+    },
+
+    "TimeComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["time", "comparison"],
+      "properties": {
+        "time": { "$ref": "#/$defs/NonNegativeInt" },
+        "comparison": { "$ref": "#/$defs/Comparison" }
+      }
+    },
+
+    "Distribution": {
+      "description": "Raw values behind one box in the box plots, with sample identifiers for hover detail.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["population", "response", "points"],
+      "properties": {
+        "population": { "$ref": "#/$defs/Population" },
+        "response": { "$ref": "#/$defs/Response" },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sample", "subject", "time", "percentage"],
+            "properties": {
+              "sample": { "type": "string" },
+              "subject": { "type": "string" },
+              "time": { "$ref": "#/$defs/NonNegativeInt" },
+              "percentage": { "$ref": "#/$defs/Percentage" }
+            }
+          }
+        }
+      }
+    },
+
+    "ResponseAnalysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cohort", "n", "by_sample", "by_subject", "by_time", "distributions"],
+      "properties": {
+        "cohort": { "$ref": "#/$defs/CohortFilter" },
+        "n": { "$ref": "#/$defs/GroupCounts" },
+        "by_sample": { "$ref": "#/$defs/Comparison" },
+        "by_subject": { "$ref": "#/$defs/Comparison" },
+        "by_time": { "type": "array", "items": { "$ref": "#/$defs/TimeComparison" } },
+        "distributions": { "type": "array", "items": { "$ref": "#/$defs/Distribution" } }
+      }
+    },
+
+    "BaselineSubset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filter", "n_samples", "n_subjects", "by_project", "by_response", "by_sex", "sample_ids"],
+      "properties": {
+        "filter": { "$ref": "#/$defs/CohortFilter" },
+        "n_samples": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_subjects": { "$ref": "#/$defs/NonNegativeInt" },
+        "by_project": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["project", "n_samples"],
+            "properties": { "project": { "type": "string" }, "n_samples": { "$ref": "#/$defs/NonNegativeInt" } }
+          }
+        },
+        "by_response": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["response", "n_subjects"],
+            "properties": { "response": { "$ref": "#/$defs/Response" }, "n_subjects": { "$ref": "#/$defs/NonNegativeInt" } }
+          }
+        },
+        "by_sex": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sex", "n_subjects"],
+            "properties": { "sex": { "$ref": "#/$defs/Sex" }, "n_subjects": { "$ref": "#/$defs/NonNegativeInt" } }
+          }
+        },
+        "sample_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "FormAnswer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "filter", "n_samples", "n_subjects", "mean_b_cell"],
+      "properties": {
+        "question": { "type": "string" },
+        "filter": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["condition", "sex", "response", "time"],
+          "properties": {
+            "condition": { "type": "string" },
+            "sex": { "$ref": "#/$defs/Sex" },
+            "response": { "$ref": "#/$defs/Response" },
+            "time": { "$ref": "#/$defs/NonNegativeInt" }
+          }
+        },
+        "n_samples": { "$ref": "#/$defs/NonNegativeInt" },
+        "n_subjects": { "$ref": "#/$defs/NonNegativeInt" },
+        "mean_b_cell": { "type": "number" }
+      }
+    },
+
+    "RunReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pipeline_version", "python_version", "library_versions", "stages", "warnings"],
+      "properties": {
+        "pipeline_version": { "type": "string" },
+        "python_version": { "type": "string" },
+        "library_versions": { "type": "object", "additionalProperties": { "type": "string" } },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "seconds", "rows_in", "rows_out"],
+            "properties": {
+              "name": { "type": "string" },
+              "seconds": { "type": "number", "minimum": 0 },
+              "rows_in": { "oneOf": [{ "$ref": "#/$defs/NonNegativeInt" }, { "type": "null" }] },
+              "rows_out": { "oneOf": [{ "$ref": "#/$defs/NonNegativeInt" }, { "type": "null" }] }
+            }
+          }
+        },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

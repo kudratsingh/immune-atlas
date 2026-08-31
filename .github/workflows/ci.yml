@@ -1,0 +1,156 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.12"
+  NODE_VERSION: "22"
+
+jobs:
+  python:
+    name: python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install
+        run: make setup-python
+      # The package guards are bootstrap-only and are removed in WS-1.
+      - name: Lint and type-check
+        if: hashFiles('immune_atlas/__init__.py') != ''
+        run: make lint-python
+      - name: Tests with coverage
+        if: hashFiles('immune_atlas/__init__.py') != ''
+        run: make test-python
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-coverage
+          path: coverage.xml
+          if-no-files-found: ignore
+
+  dashboard:
+    name: dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect dashboard
+        id: detect
+        run: echo "present=$([ -f dashboard/package.json ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.detect.outputs.present == 'true'
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - name: Install
+        if: steps.detect.outputs.present == 'true'
+        run: make setup-dashboard
+      - name: Lint and type-check
+        if: steps.detect.outputs.present == 'true'
+        run: make lint-dashboard
+      - name: Unit tests with coverage
+        if: steps.detect.outputs.present == 'true'
+        run: make test-dashboard
+      - name: Build
+        if: steps.detect.outputs.present == 'true'
+        run: |
+          mkdir -p dashboard/public/data
+          [ -f dashboard/public/data/bundle.json ] || cp contracts/fixtures/bundle.small.json dashboard/public/data/bundle.json
+          npm --prefix dashboard run build
+      - name: Not initialised yet
+        if: steps.detect.outputs.present != 'true'
+        run: echo "dashboard/ not present; nothing to check (see docs/PLAN.md WS-4)"
+
+  # Runs what the grader runs, in the order the grader runs it.
+  pipeline:
+    name: pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Required files exist
+        run: |
+          test -f Makefile
+          if [ -d immune_atlas ]; then test -f load_data.py || { echo "load_data.py missing at repo root"; exit 1; }; fi
+      - name: make setup
+        run: make setup
+      - name: make pipeline
+        if: hashFiles('immune_atlas/pipeline.py') != ''
+        run: make pipeline
+      # Data outputs must be byte-identical to what is committed. The SQLite file
+      # and PNGs are excluded: their bytes vary with the SQLite and matplotlib
+      # builds, so the integration tests check them structurally instead.
+      - name: Generated data files are deterministic
+        if: hashFiles('immune_atlas/pipeline.py') != ''
+        run: |
+          test -f cell_counts.db
+          git status --porcelain
+          git diff --exit-code --stat -- outputs dashboard/public/data \
+            ':(exclude)outputs/pipeline_run.json' ':(exclude)outputs/plots'
+      - name: make dashboard serves
+        if: hashFiles('dashboard/package.json') != ''
+        run: |
+          make dashboard > dashboard.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:3000/ > /dev/null; then echo "dashboard up after ${i}s"; exit 0; fi
+            sleep 1
+          done
+          echo "dashboard did not respond within 60s"; cat dashboard.log; exit 1
+      - name: Bootstrap notice
+        if: hashFiles('immune_atlas/pipeline.py') == ''
+        run: echo "pipeline module not present yet; grader simulation is a no-op until docs/PLAN.md WS-5"
+
+  e2e:
+    name: e2e
+    runs-on: ubuntu-latest
+    needs: [dashboard]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect e2e suite
+        id: detect
+        run: echo "present=$([ -f dashboard/playwright.config.ts ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.detect.outputs.present == 'true'
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: dashboard/package-lock.json
+      - name: Install
+        if: steps.detect.outputs.present == 'true'
+        run: make setup-e2e
+      - name: Smoke tests against the static build
+        if: steps.detect.outputs.present == 'true'
+        run: |
+          mkdir -p dashboard/public/data
+          [ -f dashboard/public/data/bundle.json ] || cp contracts/fixtures/bundle.small.json dashboard/public/data/bundle.json
+          make test-e2e
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.detect.outputs.present == 'true'
+        with:
+          name: playwright-report
+          path: dashboard/playwright-report
+      - name: Not initialised yet
+        if: steps.detect.outputs.present != 'true'
+        run: echo "no e2e suite yet (see docs/PLAN.md WS-4)"

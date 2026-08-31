@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Node / Next.js
+dashboard/node_modules/
+dashboard/.next/
+dashboard/out/
+dashboard/coverage/
+dashboard/playwright-report/
+dashboard/test-results/
+dashboard/next-env.d.ts
+
+# Local tooling
+.claude/settings.local.json
+.env
+.env.*
+.DS_Store
+*.log
+logs/
+
+# Generated files are committed on purpose (see docs/adr/0004-pipeline-and-outputs.md):
+#   cell_counts.db, outputs/, dashboard/public/data/bundle.json
