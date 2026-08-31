@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 import { DistributionBars } from "@/components/charts/DistributionBars";
 import { SmallMultiples } from "@/components/charts/SmallMultiples";
@@ -8,6 +9,7 @@ import { CohortStrip } from "@/components/layout/CohortStrip";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { BundleContent } from "@/components/states/BundleContent";
 import { DataTable, type DataColumn } from "@/components/tables/DataTable";
+import { Pagination } from "@/components/tables/Pagination";
 import { baselineCsv, baselineSampleRows } from "@/lib/baseline-view";
 import type { BundleSample } from "@/lib/filters";
 import { formatCount, pluralise } from "@/lib/stats-format";
@@ -38,6 +40,30 @@ function downloadCsv(content: string, filename: string) {
   anchor.download = filename;
   anchor.click();
   URL.revokeObjectURL(url);
+}
+
+const LIST_PAGE_SIZE = 50;
+
+function BaselineSampleList({ rows }: { rows: BundleSample[] }) {
+  const [page, setPage] = useState(1);
+  const start = (page - 1) * LIST_PAGE_SIZE;
+  return (
+    <>
+      <DataTable
+        caption={`Baseline cohort samples (${formatCount(rows.length)})`}
+        columns={sampleColumns}
+        getRowKey={(row) => row.sample}
+        rows={rows.slice(start, start + LIST_PAGE_SIZE)}
+      />
+      <Pagination
+        label="Baseline samples"
+        onChange={setPage}
+        page={page}
+        pageSize={LIST_PAGE_SIZE}
+        totalRows={rows.length}
+      />
+    </>
+  );
 }
 
 export default function BaselinePage() {
@@ -145,18 +171,14 @@ export default function BaselinePage() {
                   <p>Every baseline sample with its subject metadata.</p>
                 </div>
                 <button
+                  className="button-primary"
                   onClick={() => downloadCsv(baselineCsv(rows), "baseline_subset.csv")}
                   type="button"
                 >
                   Download CSV
                 </button>
               </div>
-              <DataTable
-                caption={`Baseline cohort samples (${formatCount(rows.length)})`}
-                columns={sampleColumns}
-                getRowKey={(row) => row.sample}
-                rows={rows}
-              />
+              <BaselineSampleList rows={rows} />
             </section>
           </>
         );

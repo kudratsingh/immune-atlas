@@ -120,7 +120,8 @@ words, each linking to its page. No KPI tiles.
 Default view is wide (one row per sample with a stacked composition bar).
 "Long table" toggle switches to the exact Part 2 layout (`sample, total_count,
 population, count, percentage`), which is what the CSV download produces.
-Virtualised rows; sticky header; numbers right-aligned in tabular figures.
+Paginated rows (100 per page) with a full pagination control; sticky header;
+numbers right-aligned in tabular figures.
 
 ### Response `/response`
 
@@ -193,8 +194,8 @@ position and is the one place with a display-size number.
 | `--panel` | `#FFFFFF` | table and chart surfaces |
 | `--ink` | `#14213D` | text, axes |
 | `--ink-muted` | `#5B6B84` | secondary text, gridlines at 20% |
-| `--rule` | `#D6DEE8` | borders and dividers |
-| `--responder` | `#0E7490` | responders (teal) |
+| `--rule` | `#DDE5EE` | borders and dividers |
+| `--responder` | `#0891B2` | responders (teal; validated for chroma, CVD separation, and contrast) |
 | `--non-responder` | `#B45309` | non-responders (ochre) |
 | `--population-1…5` | `#1E3A8A` `#2F55B3` `#4F7BD9` `#86A8EA` `#BFD3F3` | the five populations in composition bars, ordered by `sort_order` |
 | `--focus` | `#1D4ED8` | focus ring |
@@ -220,9 +221,10 @@ colour used decoratively.
 - Left-aligned, max content width 1200 px, 24 px gutters, 8 px spacing grid.
 - Top bar: wordmark left, five routes right, 56 px tall, `--paper` background
   with a `--rule` bottom border. No sidebar.
-- Sections are separated by whitespace and a heading, not by cards. Tables and
-  charts sit on `--panel` with a 1 px `--rule` border and 4 px radius; nothing
-  else has a border.
+- Content blocks — tables, charts, the filter bar, the cohort strip, the
+  question links — sit on `--panel` cards with a 1 px `--rule` border, 12 px
+  radius, and resting elevation; headings and whitespace still carry the
+  large-scale structure.
 - Tables: 36 px rows, sticky header, right-aligned numbers, zebra off, row hover
   at 4% ink.
 
@@ -236,7 +238,7 @@ bar ends instead of legends where possible; the responder/non-responder legend
 appears once per page, above the small multiples.
 
 **Avoid** — patterns that read as templated and are out of scope here: KPI tile
-grids; identical rounded cards with drop shadows; cream backgrounds with a
+grids; heavy decorative drop shadows; cream backgrounds with a
 terracotta accent; near-black-on-black with a neon accent; ALL-CAPS eyebrow
 labels; middle-dot metadata strings; arrows appended to link text; significance
 stars; rainbow categorical palettes; a chart library's default theme; icons as

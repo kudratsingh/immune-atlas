@@ -42,7 +42,7 @@ def test_response_boxplots_produce_stable_population_and_combined_pngs(tmp_path:
 
 
 def test_palette_matches_fixed_dashboard_response_colours() -> None:
-    assert PALETTE["responder"] == "#0E7490"
+    assert PALETTE["responder"] == "#0891B2"
     assert PALETTE["non_responder"] == "#B45309"
     assert [PALETTE[f"population_{index}"] for index in range(1, 6)] == [
         "#1E3A8A",
