@@ -16,6 +16,7 @@ from immune_atlas.db.queries import (
     cell_frequencies,
     cohort_frequencies,
     form_answer,
+    sample_metadata,
 )
 
 
@@ -112,3 +113,30 @@ def test_form_answer_raises_when_cohort_is_empty(tmp_path: Path) -> None:
             form_answer(connection)
     finally:
         connection.close()
+
+
+def test_sample_metadata_returns_one_row_per_sample_with_subject_metadata(
+    real_connection: sqlite3.Connection,
+) -> None:
+    frame = sample_metadata(real_connection)
+    assert tuple(frame.columns) == (
+        "sample",
+        "subject",
+        "project",
+        "condition",
+        "age",
+        "sex",
+        "treatment",
+        "response",
+        "sample_type",
+        "time_from_treatment_start",
+        "total_count",
+    )
+    assert len(frame) == 10_500
+    assert frame["sample"].is_unique
+    assert frame["sample"].is_monotonic_increasing
+    assert frame["subject"].nunique() == 3_500
+    assert frame["response"].isna().sum() == 1_422
+    first = frame.iloc[0]
+    assert first["sample"] == "sample00000"
+    assert first["total_count"] == 93_214

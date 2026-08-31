@@ -78,6 +78,20 @@ class CohortFilter:
 RESPONSE_COHORT: Final = CohortFilter(
     condition="melanoma", treatment="miraclib", sample_type="PBMC"
 )
+BASELINE_COHORT: Final = CohortFilter(
+    condition=RESPONSE_COHORT.condition,
+    treatment=RESPONSE_COHORT.treatment,
+    sample_type=RESPONSE_COHORT.sample_type,
+    time=BASELINE_TIME,
+)
+FORM_FILTER: Final = MappingProxyType(
+    {
+        "condition": RESPONSE_COHORT.condition,
+        "sex": "M",
+        "response": "yes",
+        "time": BASELINE_TIME,
+    }
+)
 
 REPO_ROOT: Final = Path(__file__).resolve().parents[1]
 
