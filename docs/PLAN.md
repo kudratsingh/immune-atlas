@@ -43,7 +43,7 @@ against synthetic DataFrames.
 | 4 | Dashboard shell + design system | `feat/dashboard-shell` | delegate | done |
 | 5 | Pipeline + export + bundle | `feat/pipeline-export` | coordinator | done |
 | 6 | Dashboard: Overview, Samples | `feat/dash-overview-samples` | delegate | done |
-| 7 | Dashboard: Response analysis | `feat/dash-response` | delegate | todo |
+| 7 | Dashboard: Response analysis | `feat/dash-response` | delegate | done |
 | 8 | Dashboard: Baseline, Methods | `feat/dash-baseline-methods` | delegate | todo |
 | 9 | Hardening + submission | `feat/hardening`, `docs/readme` | coordinator | todo |
 
