@@ -7,6 +7,7 @@ import { SamplesTable } from "@/components/samples/SamplesTable";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { BundleContent } from "@/components/states/BundleContent";
 import { DataTable, type DataColumn } from "@/components/tables/DataTable";
+import { Pagination } from "@/components/tables/Pagination";
 import type { DashboardBundle } from "@/lib/bundle.types";
 import {
   EMPTY_FILTERS,
@@ -59,7 +60,7 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
   const [view, setView] = useState<"wide" | "long">("wide");
   const [sortKey, setSortKey] = useState<SortKey>("sample");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-  const [visible, setVisible] = useState(PAGE_SIZE);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     // The static export prerenders without a query string, so the shareable
@@ -76,7 +77,7 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
 
   const updateFilters = (next: SampleFilters) => {
     setFilters(next);
-    setVisible(PAGE_SIZE);
+    setPage(1);
   };
 
   const filtered = useMemo(() => filterSamples(bundle.samples, filters), [bundle.samples, filters]);
@@ -96,9 +97,11 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
       setSortKey(key);
       setSortDirection("asc");
     }
+    setPage(1);
   };
 
   const totalRows = view === "wide" ? sorted.length : longRows.length;
+  const pageStart = (page - 1) * PAGE_SIZE;
 
   return (
     <>
@@ -114,29 +117,32 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
           {formatCount(filtered.length)} of {pluralise(bundle.meta.n_samples, "sample")} match
         </p>
         <div className="results-actions">
+          <div className="toggle-track">
+            <button
+              aria-pressed={view === "wide"}
+              className="view-toggle"
+              onClick={() => {
+                setView("wide");
+                setPage(1);
+              }}
+              type="button"
+            >
+              Wide table
+            </button>
+            <button
+              aria-pressed={view === "long"}
+              className="view-toggle"
+              onClick={() => {
+                setView("long");
+                setPage(1);
+              }}
+              type="button"
+            >
+              Long table
+            </button>
+          </div>
           <button
-            aria-pressed={view === "wide"}
-            className="view-toggle"
-            onClick={() => {
-              setView("wide");
-              setVisible(PAGE_SIZE);
-            }}
-            type="button"
-          >
-            Wide table
-          </button>
-          <button
-            aria-pressed={view === "long"}
-            className="view-toggle"
-            onClick={() => {
-              setView("long");
-              setVisible(PAGE_SIZE);
-            }}
-            type="button"
-          >
-            Long table
-          </button>
-          <button
+            className="button-primary"
             disabled={longRows.length === 0}
             onClick={() => downloadCsv(csvForLongRows(longRows), "cell_frequencies.csv")}
             type="button"
@@ -156,7 +162,7 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
         <SamplesTable
           onSort={handleSort}
           populations={bundle.meta.populations}
-          samples={sorted.slice(0, visible)}
+          samples={sorted.slice(pageStart, pageStart + PAGE_SIZE)}
           sortDirection={sortDirection}
           sortKey={sortKey}
         />
@@ -165,16 +171,16 @@ function SamplesWorkspace({ bundle }: { bundle: DashboardBundle }) {
           caption="Cell frequency long table (sample, total_count, population, count, percentage)"
           columns={longColumns}
           getRowKey={(row) => `${row.sample}-${row.population}`}
-          rows={longRows.slice(0, visible)}
+          rows={longRows.slice(pageStart, pageStart + PAGE_SIZE)}
         />
       )}
-      {visible < totalRows ? (
-        <div className="show-more">
-          <button onClick={() => setVisible(visible + PAGE_SIZE * 2)} type="button">
-            Show more ({formatCount(totalRows - visible)} remaining)
-          </button>
-        </div>
-      ) : null}
+      <Pagination
+        label="Samples"
+        onChange={setPage}
+        page={page}
+        pageSize={PAGE_SIZE}
+        totalRows={totalRows}
+      />
     </>
   );
 }

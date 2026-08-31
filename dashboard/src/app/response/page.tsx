@@ -123,50 +123,55 @@ function ResponseWorkspace({ bundle }: { bundle: DashboardBundle }) {
       <div className="results-bar">
         <div className="toggle-group" role="group" aria-label="Unit of analysis">
           <span>Unit:</span>
-          <button
-            aria-pressed={unit === "sample"}
-            className="view-toggle"
-            onClick={() => setUnit("sample")}
-            type="button"
-          >
-            Per sample
-          </button>
-          <button
-            aria-pressed={unit === "subject"}
-            className="view-toggle"
-            disabled={time !== "all"}
-            onClick={() => setUnit("subject")}
-            type="button"
-          >
-            Per subject
-          </button>
+          <div className="toggle-track">
+            <button
+              aria-pressed={unit === "sample"}
+              className="view-toggle"
+              onClick={() => setUnit("sample")}
+              type="button"
+            >
+              Per sample
+            </button>
+            <button
+              aria-pressed={unit === "subject"}
+              className="view-toggle"
+              disabled={time !== "all"}
+              onClick={() => setUnit("subject")}
+              type="button"
+            >
+              Per subject
+            </button>
+          </div>
         </div>
         <div className="toggle-group" role="group" aria-label="Time point">
           <span>Time point:</span>
-          <button
-            aria-pressed={time === "all"}
-            className="view-toggle"
-            onClick={() => setTime("all")}
-            type="button"
-          >
-            All
-          </button>
-          {availableTimes(analysis).map((value) => (
+          <div className="toggle-track">
             <button
-              aria-pressed={time === value}
+              aria-pressed={time === "all"}
               className="view-toggle"
-              key={value}
-              onClick={() => {
-                setTime(value);
-                setUnit("sample");
-              }}
+              onClick={() => setTime("all")}
               type="button"
             >
-              Day {value}
+              All
             </button>
-          ))}
+            {availableTimes(analysis).map((value) => (
+              <button
+                aria-pressed={time === value}
+                className="view-toggle"
+                key={value}
+                onClick={() => {
+                  setTime(value);
+                  setUnit("sample");
+                }}
+                type="button"
+              >
+                Day {value}
+              </button>
+            ))}
+          </div>
         </div>
         <button
+          className="button-primary"
           onClick={() =>
             downloadCsv(
               statsCsv(comparison),
@@ -181,9 +186,11 @@ function ResponseWorkspace({ bundle }: { bundle: DashboardBundle }) {
           Download plots PNG
         </button>
       </div>
-      <div className="group-legend" aria-label="Response group legend">
-        <span className="responder-swatch" /> Responders <span className="non-responder-swatch" />{" "}
-        Non-responders
+      <div className="charts-header">
+        <div className="group-legend" aria-label="Response group legend">
+          <span className="responder-swatch" /> Responders <span className="non-responder-swatch" />{" "}
+          Non-responders
+        </div>
       </div>
       <SmallMultiples label="Cell population box plots">
         {bundle.meta.populations.map((population) => {

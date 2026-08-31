@@ -85,7 +85,26 @@ export function SamplesTable({
                 <button className="sort-button" onClick={() => onSort(column.key)} type="button">
                   {column.header}
                   {sortKey === column.key ? (
-                    <span aria-hidden="true">{sortDirection === "asc" ? " ↑" : " ↓"}</span>
+                    <svg
+                      aria-hidden="true"
+                      className="sort-caret"
+                      fill="none"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
+                    >
+                      <path
+                        d={
+                          sortDirection === "asc"
+                            ? "M6 2.5v7M3 5l3-2.5L9 5"
+                            : "M6 9.5v-7M3 7l3 2.5L9 7"
+                        }
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.6"
+                      />
+                    </svg>
                   ) : null}
                 </button>
               </th>

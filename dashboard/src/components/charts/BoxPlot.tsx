@@ -89,7 +89,7 @@ export function BoxPlot({
     range: [height - margin.bottom, margin.top],
     nice: true,
   });
-  const positions: Record<ResponseGroup, number> = { yes: width * 0.4, no: width * 0.72 };
+  const positions: Record<ResponseGroup, number> = { yes: width * 0.34, no: width * 0.74 };
   const columns: DataColumn<BoxPlotPoint>[] = [
     { id: "sample", header: "Sample", render: (point) => <code>{point.sample}</code> },
     { id: "subject", header: "Subject", render: (point) => <code>{point.subject}</code> },
@@ -129,6 +129,15 @@ export function BoxPlot({
             role="img"
             aria-label={`${title} distribution by response group`}
           >
+            {y.ticks(5).map((tick) => (
+              <Line
+                from={{ x: margin.left, y: y(tick) }}
+                key={tick}
+                stroke={PALETTE.rule}
+                strokeWidth={1}
+                to={{ x: width - margin.right, y: y(tick) }}
+              />
+            ))}
             <AxisLeft
               left={margin.left}
               scale={y}
@@ -151,6 +160,24 @@ export function BoxPlot({
               const colour = responseColour(group);
               return (
                 <g key={group}>
+                  {groupPoints.map((point) => (
+                    <circle
+                      key={`${point.sample}-${point.time}`}
+                      cx={x + hashJitter(`${point.sample}-${point.time}`) * 40}
+                      cy={y(point.percentage)}
+                      r={activePoint === point ? 5 : 3}
+                      fill={colour}
+                      fillOpacity={activePoint === point ? 1 : 0.38}
+                      stroke={activePoint === point ? PALETTE.panel : "none"}
+                      strokeWidth={activePoint === point ? 2 : 0}
+                      tabIndex={0}
+                      aria-label={`${point.sample}, ${groupLabel[group]}, day ${point.time}, ${formatPercentage(point.percentage)}`}
+                      onMouseEnter={() => setActivePoint(point)}
+                      onMouseLeave={() => setActivePoint(null)}
+                      onFocus={() => setActivePoint(point)}
+                      onBlur={() => setActivePoint(null)}
+                    />
+                  ))}
                   <Line
                     from={{ x, y: y(summary.low) }}
                     to={{ x, y: y(summary.high) }}
@@ -167,37 +194,29 @@ export function BoxPlot({
                     stroke={colour}
                   />
                   <rect
-                    x={x - 24}
+                    x={x - 26}
                     y={y(summary.q3)}
-                    width={48}
+                    width={52}
                     height={Math.max(1, y(summary.q1) - y(summary.q3))}
                     fill={colour}
-                    fillOpacity={0.14}
+                    fillOpacity={0.1}
+                    rx={3}
                     stroke={colour}
+                    strokeWidth={1.25}
                   />
                   <Line
-                    from={{ x: x - 24, y: y(summary.median) }}
-                    to={{ x: x + 24, y: y(summary.median) }}
+                    from={{ x: x - 26, y: y(summary.median) }}
+                    to={{ x: x + 26, y: y(summary.median) }}
                     stroke={colour}
-                    strokeWidth={2}
+                    strokeWidth={2.5}
                   />
-                  {groupPoints.map((point) => (
-                    <circle
-                      key={`${point.sample}-${point.time}`}
-                      cx={x + hashJitter(`${point.sample}-${point.time}`) * 40}
-                      cy={y(point.percentage)}
-                      r={3}
-                      fill={colour}
-                      fillOpacity={0.46}
-                      tabIndex={0}
-                      aria-label={`${point.sample}, ${groupLabel[group]}, day ${point.time}, ${formatPercentage(point.percentage)}`}
-                      onMouseEnter={() => setActivePoint(point)}
-                      onMouseLeave={() => setActivePoint(null)}
-                      onFocus={() => setActivePoint(point)}
-                      onBlur={() => setActivePoint(null)}
-                    />
-                  ))}
-                  <text x={x} y={height - 22} textAnchor="middle" fill={PALETTE.ink} fontSize={12}>
+                  <text
+                    x={x}
+                    y={height - 22}
+                    textAnchor="middle"
+                    fill={PALETTE.inkMuted}
+                    fontSize={11}
+                  >
                     {groupLabel[group]} n={groupPoints.length}
                   </text>
                 </g>
@@ -206,8 +225,8 @@ export function BoxPlot({
           </svg>
           {activePoint ? (
             <div className="chart-tooltip" role="status">
-              <code>{activePoint.sample}</code>, {activePoint.subject}, day {activePoint.time},{" "}
-              {formatPercentage(activePoint.percentage)}
+              <strong>{formatPercentage(activePoint.percentage)}</strong> —{" "}
+              <code>{activePoint.sample}</code>, {activePoint.subject}, day {activePoint.time}
             </div>
           ) : null}
         </div>

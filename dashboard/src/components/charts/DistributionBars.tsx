@@ -1,7 +1,6 @@
 "use client";
 
 import { scaleLinear } from "@visx/scale";
-import { Bar } from "@visx/shape";
 import { useState } from "react";
 
 import { PALETTE } from "@/lib/palette";
@@ -25,6 +24,7 @@ export function DistributionBars({
   data: DistributionBarDatum[];
 }) {
   const [showTable, setShowTable] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
   const reducedMotion = useReducedMotion();
   const width = 520;
   const rowHeight = 42;
@@ -65,22 +65,26 @@ export function DistributionBars({
             aria-label={`${title}, ${unit}`}
           >
             {data.map((datum, index) => {
-              const y = index * rowHeight + 8;
+              const y = index * rowHeight + 10;
+              const barWidth = Math.max(x(datum.value), 4);
+              const radius = Math.min(4, barWidth / 2);
               return (
-                <g key={datum.label}>
-                  <text x={0} y={y + 20} fill={PALETTE.ink} fontSize={13}>
+                <g
+                  key={datum.label}
+                  onMouseEnter={() => setActive(datum.label)}
+                  onMouseLeave={() => setActive(null)}
+                >
+                  <text x={0} y={y + 16} fill={PALETTE.ink} fontSize={13}>
                     {datum.label}
                   </text>
-                  <Bar
-                    x={left}
-                    y={y}
-                    width={x(datum.value)}
-                    height={26}
+                  <path
+                    d={`M ${left} ${y} H ${left + barWidth - radius} Q ${left + barWidth} ${y} ${left + barWidth} ${y + radius} V ${y + 22 - radius} Q ${left + barWidth} ${y + 22} ${left + barWidth - radius} ${y + 22} H ${left} Z`}
                     fill={PALETTE.populations[1]}
+                    fillOpacity={active === null || active === datum.label ? 1 : 0.55}
                   />
                   <text
-                    x={left + x(datum.value) + 8}
-                    y={y + 19}
+                    x={left + barWidth + 8}
+                    y={y + 16}
                     fill={PALETTE.ink}
                     fontSize={13}
                     fontWeight={600}
