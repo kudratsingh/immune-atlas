@@ -95,7 +95,12 @@ def _count_rows(frame: pd.DataFrame) -> list[tuple[object, ...]]:
 def load_csv(connection: sqlite3.Connection, csv_path: Path) -> LoadReport:
     """Validate and insert one wide CSV into an empty initialised database."""
     started_at = time.perf_counter()
-    frame = read_validated_csv(csv_path)
+    return _insert_frame(connection, read_validated_csv(csv_path), started_at)
+
+
+def _insert_frame(
+    connection: sqlite3.Connection, frame: pd.DataFrame, started_at: float
+) -> LoadReport:
     projects = sorted(str(project) for project in frame["project"].unique())
     subject_rows = _subject_rows(frame)
     sample_rows = _sample_rows(frame)
@@ -133,9 +138,15 @@ def load_csv(connection: sqlite3.Connection, csv_path: Path) -> LoadReport:
 
 
 def run(csv_path: Path, db_path: Path) -> LoadReport:
-    """Rebuild a database from scratch and return its deterministic row counts."""
+    """Validate the CSV, then rebuild a database from scratch (ARCHITECTURE §Loading).
+
+    Validation runs before the existing database file is touched, so an invalid
+    input leaves the previous database in place.
+    """
+    started_at = time.perf_counter()
+    frame = read_validated_csv(csv_path)
     connection = init_db(db_path)
     try:
-        return load_csv(connection, csv_path)
+        return _insert_frame(connection, frame, started_at)
     finally:
         connection.close()

@@ -100,3 +100,16 @@ def test_init_db_replaces_existing_database(tmp_path: Path) -> None:
         assert second.execute("SELECT COUNT(*) FROM projects").fetchone()[0] == 0
     finally:
         second.close()
+
+
+def test_run_preserves_the_existing_database_when_validation_fails(
+    synthetic_wide_frame: pd.DataFrame, tmp_path: Path
+) -> None:
+    db_path = tmp_path / "keep.db"
+    run(_write(synthetic_wide_frame, tmp_path / "good.csv"), db_path)
+    before = db_path.read_bytes()
+    bad = synthetic_wide_frame.copy()
+    bad.loc[0, "b_cell"] = -1
+    with pytest.raises(DataContractError):
+        run(_write(bad, tmp_path / "bad.csv"), db_path)
+    assert db_path.read_bytes() == before
