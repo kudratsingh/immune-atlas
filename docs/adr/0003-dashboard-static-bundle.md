@@ -1,6 +1,6 @@
 # 0003. Dashboard as a static Next.js app over a pipeline-emitted data bundle
 
-Status: Accepted
+Status: Accepted (hosting superseded by ADR-0007)
 Date: 2026-08-30
 
 ## Context
