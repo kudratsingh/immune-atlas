@@ -29,3 +29,4 @@ logs/
 
 # Generated files are committed on purpose (see docs/adr/0004-pipeline-and-outputs.md):
 #   cell_counts.db, outputs/, dashboard/public/data/bundle.json
+dashboard/tsconfig.tsbuildinfo
