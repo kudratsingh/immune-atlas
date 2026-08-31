@@ -44,6 +44,34 @@ def cell_frequencies(connection: sqlite3.Connection) -> pd.DataFrame:
     return frame.loc[:, list(FREQUENCY_COLUMNS)]
 
 
+def sample_metadata(connection: sqlite3.Connection) -> pd.DataFrame:
+    """Return one row per sample with subject metadata and the sample total count.
+
+    Columns are `sample, subject, project, condition, age, sex, treatment, response,
+    sample_type, time_from_treatment_start, total_count`, ordered by sample.
+    """
+    return _frame(
+        connection,
+        """
+        SELECT s.sample_id AS sample,
+               s.subject_id AS subject,
+               u.project_id AS project,
+               u.condition,
+               u.age,
+               u.sex,
+               u.treatment,
+               u.response,
+               s.sample_type,
+               s.time_from_treatment_start,
+               t.total_count
+        FROM samples AS s
+        JOIN subjects AS u ON u.subject_id = s.subject_id
+        JOIN v_sample_totals AS t ON t.sample_id = s.sample_id
+        ORDER BY s.sample_id
+        """,
+    )
+
+
 def cohort_frequencies(
     connection: sqlite3.Connection,
     *,

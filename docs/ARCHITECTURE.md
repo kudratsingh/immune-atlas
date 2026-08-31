@@ -174,6 +174,9 @@ table computed in SQL; pandas reads it rather than recomputing it.
 
 - `cell_frequencies(conn)` — `SELECT * FROM v_cell_frequencies` ordered by
   sample, population sort order.
+- `sample_metadata(conn)` — one row per sample with its subject metadata and
+  total count, ordered by sample. Feeds the bundle's `meta` and `samples`
+  sections.
 - `cohort_frequencies(conn, *, condition, treatment, sample_type)` — frequencies
   joined with subject metadata for a cohort. Used by Part 3.
 - `baseline_samples(conn, *, condition, treatment, sample_type, time)` — Part 4.1.
@@ -246,6 +249,14 @@ seed, and metadata so they are byte-stable within an environment; across
 environments PNG bytes depend on the matplotlib build, so CI checks them
 structurally rather than by diff. The same applies to `cell_counts.db`, whose
 header records the SQLite library version.
+
+The bundle is part of the byte-level determinism check, so its
+environment-dependent fields are fixed by construction: `meta.generated_at` is
+a constant, the `run.stages[].seconds` it embeds are zeroed, and
+`run.python_version` is truncated to major.minor (the CI-pinned interpreter
+line). Real timings and the full interpreter version live only in
+`outputs/pipeline_run.json`. Unlike the files under `outputs/`, the bundle is a
+network payload and is written compact (sorted keys, no indentation).
 
 ### Dashboard data bundle (ADR-0003)
 
@@ -342,8 +353,9 @@ the same functions are unit-tested without rendering.
 - `Timer(name, metrics)` context manager.
 - `Metrics` — the input checksum, library versions, warnings, and counters and gauges
   keyed by stage (rows in, rows out, seconds), serialised to
-  `outputs/pipeline_run.json` and echoed into the bundle's `run` section so the
-  dashboard's Methods page can show data provenance. The run contract fixes the
+  `outputs/pipeline_run.json` and echoed into the bundle's `run` section (with
+  stage seconds zeroed for determinism, see §Outputs) so the dashboard's
+  Methods page can show data provenance. The run contract fixes the
   version keys to pandas, NumPy, SciPy, Matplotlib, and jsonschema; `Metrics`
   discovers those installed versions when a run starts.
 
@@ -361,6 +373,8 @@ the stages.
 POPULATIONS = ("b_cell", "cd8_t_cell", "cd4_t_cell", "nk_cell", "monocyte")
 FREQUENCY_COLUMNS = ("sample", "total_count", "population", "count", "percentage")
 RESPONSE_COHORT = CohortFilter(condition="melanoma", treatment="miraclib", sample_type="PBMC")
+BASELINE_COHORT = CohortFilter(..., time=BASELINE_TIME)  # RESPONSE_COHORT at day 0
+FORM_FILTER = {"condition": "melanoma", "sex": "M", "response": "yes", "time": 0}
 BASELINE_TIME = 0
 ALPHA = 0.05
 ```

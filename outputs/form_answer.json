@@ -1,0 +1,12 @@
+{
+  "filter": {
+    "condition": "melanoma",
+    "response": "yes",
+    "sex": "M",
+    "time": 0
+  },
+  "mean_b_cell": 10206.15,
+  "n_samples": 485,
+  "n_subjects": 485,
+  "question": "Considering melanoma males of all sample and treatment types, what is the average number of B cells for responders at time=0?"
+}

@@ -1,0 +1,40 @@
+{
+  "by_project": [
+    {
+      "n_samples": 384,
+      "project": "prj1"
+    },
+    {
+      "n_samples": 272,
+      "project": "prj3"
+    }
+  ],
+  "by_response": [
+    {
+      "n_subjects": 331,
+      "response": "yes"
+    },
+    {
+      "n_subjects": 325,
+      "response": "no"
+    }
+  ],
+  "by_sex": [
+    {
+      "n_subjects": 344,
+      "sex": "M"
+    },
+    {
+      "n_subjects": 312,
+      "sex": "F"
+    }
+  ],
+  "filter": {
+    "condition": "melanoma",
+    "sample_type": "PBMC",
+    "time": 0,
+    "treatment": "miraclib"
+  },
+  "n_samples": 656,
+  "n_subjects": 656
+}

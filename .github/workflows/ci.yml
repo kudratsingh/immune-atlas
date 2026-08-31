@@ -90,17 +90,15 @@ jobs:
       - name: Required files exist
         run: |
           test -f Makefile
-          if [ -d immune_atlas/db ]; then test -f load_data.py || { echo "load_data.py missing at repo root"; exit 1; }; fi
+          test -f load_data.py
       - name: make setup
         run: make setup
       - name: make pipeline
-        if: hashFiles('immune_atlas/pipeline.py') != ''
         run: make pipeline
       # Data outputs must be byte-identical to what is committed. The SQLite file
       # and PNGs are excluded: their bytes vary with the SQLite and matplotlib
       # builds, so the integration tests check them structurally instead.
       - name: Generated data files are deterministic
-        if: hashFiles('immune_atlas/pipeline.py') != ''
         run: |
           test -f cell_counts.db
           git status --porcelain
@@ -115,9 +113,6 @@ jobs:
             sleep 1
           done
           echo "dashboard did not respond within 60s"; cat dashboard.log; exit 1
-      - name: Bootstrap notice
-        if: hashFiles('immune_atlas/pipeline.py') == ''
-        run: echo "pipeline module not present yet; grader simulation is a no-op until docs/PLAN.md WS-5"
 
   e2e:
     name: e2e

@@ -1,0 +1,57 @@
+{
+  "library_versions": {
+    "jsonschema": "4.26.0",
+    "matplotlib": "3.11.1",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1"
+  },
+  "pipeline_version": "0.1.0",
+  "python_version": "3.12.14",
+  "source_sha256": "011373475d37417d4131d4a06efeb58df89c4adc76451a5efa48a535ed293c82",
+  "stages": [
+    {
+      "name": "load_database",
+      "rows_in": 10500,
+      "rows_out": 52500,
+      "seconds": 0.23295870798756368
+    },
+    {
+      "name": "cell_frequencies",
+      "rows_in": null,
+      "rows_out": 52500,
+      "seconds": 0.1414080000249669
+    },
+    {
+      "name": "response_comparison",
+      "rows_in": 9840,
+      "rows_out": 5,
+      "seconds": 0.09677366699906997
+    },
+    {
+      "name": "response_plots",
+      "rows_in": 9840,
+      "rows_out": 6,
+      "seconds": 0.7626795830146875
+    },
+    {
+      "name": "baseline_subset",
+      "rows_in": 656,
+      "rows_out": 656,
+      "seconds": 0.00916766599402763
+    },
+    {
+      "name": "form_answer",
+      "rows_in": null,
+      "rows_out": 485,
+      "seconds": 0.035647832992253825
+    },
+    {
+      "name": "dashboard_bundle",
+      "rows_in": 10500,
+      "rows_out": 10500,
+      "seconds": 4.080578166001942
+    }
+  ],
+  "warnings": []
+}
