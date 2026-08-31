@@ -598,3 +598,238 @@ code {
         align-self: start;
     }
 }
+
+/* Samples workspace (WS-6) */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.filter-popover {
+    position: relative;
+}
+
+.filter-popover summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--panel);
+    font-size: 13px;
+    color: var(--ink);
+}
+
+.filter-popover summary::-webkit-details-marker {
+    display: none;
+}
+
+.filter-popover summary:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.filter-popover[open] summary {
+    border-color: var(--ink-muted);
+}
+
+.filter-count {
+    margin-left: 6px;
+    padding: 0 6px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--panel);
+    font-size: 11px;
+}
+
+.filter-popover fieldset {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 160px;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--panel);
+    box-shadow: none;
+}
+
+.filter-popover label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 4px 2px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.filter-search input {
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    font-size: 13px;
+    min-width: 180px;
+}
+
+.filter-bar button,
+.results-actions button,
+.empty-state button,
+.show-more button {
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--panel);
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.filter-bar button:disabled,
+.results-actions button:disabled {
+    color: var(--ink-muted);
+    cursor: default;
+}
+
+.results-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.results-bar p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.results-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.view-toggle[aria-pressed="true"] {
+    border-color: var(--ink);
+    font-weight: 600;
+}
+
+.empty-state {
+    padding: 32px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--panel);
+    text-align: center;
+}
+
+.show-more {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.sort-button {
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+}
+
+.sort-button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.composition-cell {
+    min-width: 180px;
+}
+
+.composition-bar {
+    display: flex;
+    height: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+}
+
+.composition-segment {
+    display: block;
+    height: 100%;
+}
+
+.population-1 {
+    background: var(--population-1);
+}
+.population-2 {
+    background: var(--population-2);
+}
+.population-3 {
+    background: var(--population-3);
+}
+.population-4 {
+    background: var(--population-4);
+}
+.population-5 {
+    background: var(--population-5);
+}
+
+.row-toggle {
+    border: 0;
+    padding: 0;
+    background: none;
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.expanded-row td {
+    background: var(--paper);
+}
+
+.composition-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin: 0;
+}
+
+.composition-detail div {
+    display: flex;
+    gap: 6px;
+}
+
+.composition-detail dt {
+    color: var(--ink-muted);
+}
+
+.composition-detail dd {
+    margin: 0;
+    font-feature-settings: "tnum";
+}
+
+.structure-footnote {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-muted);
+}
