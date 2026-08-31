@@ -1,0 +1,7 @@
+.next
+coverage
+out
+playwright-report
+test-results
+public/data/bundle.json
+src/lib/bundle.types.ts

@@ -40,7 +40,7 @@ against synthetic DataFrames.
 | 1 | Foundation | `feat/foundation` | coordinator | done |
 | 2 | Data layer | `feat/data-layer` | delegate | done |
 | 3 | Analysis | `feat/analysis` | delegate | done |
-| 4 | Dashboard shell + design system | `feat/dashboard-shell` | delegate | todo |
+| 4 | Dashboard shell + design system | `feat/dashboard-shell` | delegate | done |
 | 5 | Pipeline + export + bundle | `feat/pipeline-export` | coordinator | done |
 | 6 | Dashboard: Overview, Samples | `feat/dash-overview-samples` | delegate | todo |
 | 7 | Dashboard: Response analysis | `feat/dash-response` | delegate | todo |
