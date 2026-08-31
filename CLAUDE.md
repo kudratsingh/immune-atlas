@@ -62,13 +62,14 @@ scripts/               Repo bootstrap and worktree helpers.
 
 **Python**
 
-- Python 3.10+, fully type-annotated public functions, `ruff` for lint and format,
+- Python 3.11+, fully type-annotated public functions, `ruff` for lint and format,
   `mypy` on the package. Line length 100.
 - Every module starts with a one- or two-sentence docstring saying what the file is
   for. Public functions get a short docstring. Comments explain *why*, not *what*,
   and are rare. No commented-out code, no TODOs without an issue reference.
 - Analysis functions are pure: they take and return DataFrames. Database access lives
-  in `immune_atlas/db/queries.py` only. Writing files lives in `export.py` only.
+  in `immune_atlas/db/queries.py` only. Analysis artifacts are written by `export.py`;
+  `Metrics.write` owns the pipeline run report.
 - Log through `immune_atlas.observability.get_logger(__name__)`. No `print` outside
   the CLI entry points.
 - Outputs are deterministic: stable row ordering, fixed float formatting, no

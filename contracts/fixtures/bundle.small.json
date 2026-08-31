@@ -1660,11 +1660,15 @@
   },
   "run": {
     "library_versions": {
-      "numpy": "2.4.4",
-      "pandas": "3.0.2"
+      "jsonschema": "4.26.0",
+      "matplotlib": "3.11.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.5",
+      "scipy": "1.17.1"
     },
     "pipeline_version": "0.1.0",
     "python_version": "3.12",
+    "source_sha256": "011373475d37417d4131d4a06efeb58df89c4adc76451a5efa48a535ed293c82",
     "stages": [
       {
         "name": "load_database",

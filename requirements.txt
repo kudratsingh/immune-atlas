@@ -1,7 +1,6 @@
-# Runtime dependencies. Ranges rather than exact pins so `make setup` resolves on
-# the Codespaces default image; CI runs the same resolution on Python 3.12.
-pandas>=2.2,<4
-numpy>=1.26,<3
-scipy>=1.11,<2
-matplotlib>=3.8,<4
-jsonschema>=4.20,<5
+# Pinned top-level runtime dependencies keep Codespaces and CI reproducible.
+pandas==3.0.5
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.1
+jsonschema==4.26.0

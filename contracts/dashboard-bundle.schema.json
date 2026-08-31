@@ -304,11 +304,23 @@
     "RunReport": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["pipeline_version", "python_version", "library_versions", "stages", "warnings"],
+      "required": ["source_sha256", "pipeline_version", "python_version", "library_versions", "stages", "warnings"],
       "properties": {
+        "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
         "pipeline_version": { "type": "string" },
         "python_version": { "type": "string" },
-        "library_versions": { "type": "object", "additionalProperties": { "type": "string" } },
+        "library_versions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pandas", "numpy", "scipy", "matplotlib", "jsonschema"],
+          "properties": {
+            "pandas": { "type": "string" },
+            "numpy": { "type": "string" },
+            "scipy": { "type": "string" },
+            "matplotlib": { "type": "string" },
+            "jsonschema": { "type": "string" }
+          }
+        },
         "stages": {
           "type": "array",
           "items": {

@@ -269,12 +269,20 @@ Top-level shape:
   "response_analysis": {
     "cohort": { "condition": "melanoma", "treatment": "miraclib", "sample_type": "PBMC" },
     "n": { "samples_yes": 993, "samples_no": 975, "subjects_yes": 331, "subjects_no": 325 },
-    "by_sample":  [ { "population": "...", "n_yes": 0, "n_no": 0, "median_yes": 0, "median_no": 0,
-                      "iqr_yes": [0,0], "iqr_no": [0,0], "u": 0, "p": 0, "q": 0, "effect_size": 0,
-                      "welch_p": 0, "significant_raw": false, "significant_adjusted": false } ],
-    "by_subject": [ ...same rows... ],
-    "by_time":    [ { "time": 0, "rows": [ ...same rows... ] } ],
-    "distributions": [ { "population": "...", "response": "yes", "values": [ ... ] } ]
+    "by_sample": { "unit": "sample", "alpha": 0.05, "method": "Mann-Whitney U",
+                   "adjustment": "Benjamini-Hochberg", "n_samples": 1968,
+                   "n_subjects": 656, "rows": [
+      { "population": "cd4_t_cell", "n_yes": 993, "n_no": 975,
+        "mean_yes": 0, "mean_no": 0, "sd_yes": 0, "sd_no": 0,
+        "median_yes": 0, "median_no": 0, "iqr_yes": [0,0], "iqr_no": [0,0],
+        "u_statistic": 0, "p_value": 0, "q_value": 0, "effect_size": 0,
+        "welch_p": 0, "significant_raw": false, "significant_adjusted": false }
+    ] },
+    "by_subject": { ...same comparison shape with "unit": "subject"... },
+    "by_time": [ { "time": 0, "comparison": { ...same comparison shape... } } ],
+    "distributions": [ { "population": "cd4_t_cell", "response": "yes",
+                           "points": [ { "sample": "...", "subject": "...",
+                                         "time": 0, "percentage": 30.2 } ] } ]
   },
   "baseline_subset": {
     "filter": { "condition": "melanoma", "treatment": "miraclib", "sample_type": "PBMC", "time": 0 },
@@ -284,8 +292,12 @@ Top-level shape:
     "by_sex":      [ { "sex": "M", "n_subjects": 344 } ],
     "sample_ids":  [ "..." ]
   },
-  "form_answer": { "question": "...", "filter": {...}, "n": 485, "mean_b_cell": 10206.15 },
-  "run": { "stages": [ { "name": "...", "seconds": 0.0, "rows": 0 } ], "warnings": [] }
+  "form_answer": { "question": "...", "filter": {...}, "n_samples": 485,
+                   "n_subjects": 485, "mean_b_cell": 10206.15 },
+  "run": { "source_sha256": "...", "pipeline_version": "0.1.0",
+           "python_version": "3.12", "library_versions": {...},
+           "stages": [ { "name": "...", "seconds": 0.0,
+                         "rows_in": 0, "rows_out": 0 } ], "warnings": [] }
 }
 ```
 
@@ -328,9 +340,12 @@ the same functions are unit-tested without rendering.
   `IMMUNE_ATLAS_LOG_JSON=1`.
 - `get_logger(name)`.
 - `Timer(name, metrics)` context manager.
-- `Metrics` — counters and gauges keyed by stage (rows in, rows out, seconds,
-  warnings), serialised to `outputs/pipeline_run.json` and echoed into the bundle's
-  `run` section so the dashboard's Methods page can show data provenance.
+- `Metrics` — the input checksum, library versions, warnings, and counters and gauges
+  keyed by stage (rows in, rows out, seconds), serialised to
+  `outputs/pipeline_run.json` and echoed into the bundle's `run` section so the
+  dashboard's Methods page can show data provenance. The run contract fixes the
+  version keys to pandas, NumPy, SciPy, Matplotlib, and jsonschema; `Metrics`
+  discovers those installed versions when a run starts.
 
 Every pipeline stage logs start, row counts, and duration at INFO. Validation
 problems log at ERROR with row references. There is no long-running service to
