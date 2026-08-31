@@ -27,8 +27,8 @@ export function DistributionBars({
   const [active, setActive] = useState<string | null>(null);
   const reducedMotion = useReducedMotion();
   const width = 520;
-  const rowHeight = 42;
-  const left = 110;
+  const rowHeight = 46;
+  const left = 122;
   const max = Math.max(...data.map((datum) => datum.value), 1);
   const x = scaleLinear({ domain: [0, max], range: [0, width - left - 64] });
   const columns: DataColumn<DistributionBarDatum>[] = [
@@ -74,7 +74,7 @@ export function DistributionBars({
                   onMouseEnter={() => setActive(datum.label)}
                   onMouseLeave={() => setActive(null)}
                 >
-                  <text x={0} y={y + 16} fill={PALETTE.ink} fontSize={13}>
+                  <text x={0} y={y + 17} fill={PALETTE.ink} fontSize={15}>
                     {datum.label}
                   </text>
                   <path
@@ -84,9 +84,9 @@ export function DistributionBars({
                   />
                   <text
                     x={left + barWidth + 8}
-                    y={y + 16}
+                    y={y + 17}
                     fill={PALETTE.ink}
-                    fontSize={13}
+                    fontSize={15}
                     fontWeight={600}
                   >
                     {formatCount(datum.value)}

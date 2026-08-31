@@ -311,12 +311,13 @@ code {
     display: none;
 }
 .strip-connector {
-    bottom: -0.1rem;
     color: var(--accent);
     height: 3.2rem;
     opacity: 0.22;
     position: absolute;
-    right: 0.4rem;
+    right: 0.5rem;
+    top: 2.85rem;
+    transform: translateY(-50%);
     width: 2.2rem;
 }
 /* Connectors anchor to the number row (steps that carry one never have a
@@ -325,12 +326,12 @@ code {
     border-bottom: 2px solid var(--rule-strong);
     border-right: 2px solid var(--rule-strong);
     border-radius: 1px;
-    bottom: 1.05rem;
     content: "";
     height: 0.75rem;
     position: absolute;
     right: 1.4rem;
-    transform: rotate(-45deg);
+    top: 2.85rem;
+    transform: translateY(-50%) rotate(-45deg);
     width: 0.75rem;
 }
 .cohort-strip span {
