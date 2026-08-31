@@ -879,3 +879,48 @@ code {
     color: var(--ink-muted);
     max-width: 75ch;
 }
+
+/* Baseline and methods (WS-8) */
+
+.form-aside {
+    margin: 24px 0;
+    padding: 16px 20px;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--non-responder);
+    border-radius: 4px;
+    background: var(--panel);
+    max-width: 75ch;
+}
+
+.form-aside h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.form-aside p {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.form-answer strong {
+    font-feature-settings: "tnum";
+}
+
+.schema-diagram {
+    max-width: 620px;
+    margin-bottom: 16px;
+}
+
+.schema-diagram svg {
+    width: 100%;
+    height: auto;
+}
+
+.source-links {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.source-links li {
+    margin-bottom: 6px;
+}
