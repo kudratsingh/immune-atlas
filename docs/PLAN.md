@@ -45,7 +45,7 @@ against synthetic DataFrames.
 | 6 | Dashboard: Overview, Samples | `feat/dash-overview-samples` | delegate | done |
 | 7 | Dashboard: Response analysis | `feat/dash-response` | delegate | done |
 | 8 | Dashboard: Baseline, Methods | `feat/dash-baseline-methods` | delegate | done |
-| 9 | Hardening + submission | `feat/hardening`, `docs/readme` | coordinator | in progress |
+| 9 | Hardening + submission | `feat/hardening`, `docs/readme` | coordinator | done |
 
 ## Phase 1
 
