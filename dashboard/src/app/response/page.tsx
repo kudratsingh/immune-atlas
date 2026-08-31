@@ -100,6 +100,7 @@ function ResponseWorkspace({ bundle }: { bundle: DashboardBundle }) {
         </p>
       </PageIntro>
       <CohortStrip
+        funnel
         steps={[
           { label: "All samples", count: bundle.meta.n_samples },
           { label: analysis.cohort.condition, count: melanomaSamples.length },
