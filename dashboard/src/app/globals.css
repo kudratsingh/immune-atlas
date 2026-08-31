@@ -833,3 +833,49 @@ code {
     font-size: 13px;
     color: var(--ink-muted);
 }
+
+/* Response analysis (WS-7) */
+
+.cohort-groups {
+    margin: -8px 0 16px;
+    font-size: 15px;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.toggle-group > span {
+    font-size: 13px;
+    color: var(--ink-muted);
+}
+
+.chart-with-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chart-stat-line {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ink);
+    font-feature-settings: "tnum";
+    text-align: center;
+}
+
+.finding-block {
+    font-family: "IBM Plex Serif", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 72ch;
+}
+
+.method-footnote {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-muted);
+    max-width: 75ch;
+}
