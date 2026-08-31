@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { CohortStrip } from "@/components/layout/CohortStrip";
+import { HeroMotif } from "@/components/layout/HeroMotif";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { BundleContent } from "@/components/states/BundleContent";
 import { DataTable, type DataColumn } from "@/components/tables/DataTable";
@@ -12,7 +13,7 @@ import {
   type SampleTypeTimeCell,
   type SubjectCountCell,
 } from "@/lib/samples-view";
-import { formatCount, pluralise } from "@/lib/stats-format";
+import { formatCount } from "@/lib/stats-format";
 
 const structureColumns: DataColumn<SubjectCountCell>[] = [
   { id: "condition", header: "Condition", render: (row) => row.condition },
@@ -31,7 +32,10 @@ export default function OverviewPage() {
     <BundleContent>
       {(bundle) => (
         <>
-          <PageIntro title="Immune cell populations across a clinical trial dataset">
+          <PageIntro
+            motif={<HeroMotif />}
+            title="Immune cell populations across a clinical trial dataset"
+          >
             <p>
               Explore cell composition, treatment response, and the baseline cohort from one
               reproducible analysis bundle.
@@ -78,18 +82,43 @@ export default function OverviewPage() {
             <h2 id="three-questions">Three questions</h2>
             <ol>
               <li>
-                <Link href="/samples/">
-                  What is the frequency of each population in each sample?
-                </Link>
-                <span>{pluralise(bundle.meta.n_samples, "sample")} available</span>
+                <div className="question-copy">
+                  <Link href="/samples/">
+                    What is the frequency of each population in each sample?
+                  </Link>
+                  <span>Filter, sort, and export every composition.</span>
+                </div>
+                <p className="question-stat">
+                  <strong>{formatCount(bundle.frequencies_long.length)}</strong>
+                  <small>frequency rows</small>
+                </p>
               </li>
               <li>
-                <Link href="/response/">Do responders differ from non-responders on miraclib?</Link>
-                <span>Statistics and observed distributions</span>
+                <div className="question-copy">
+                  <Link href="/response/">
+                    Do responders differ from non-responders on miraclib?
+                  </Link>
+                  <span>Statistics and observed distributions, per sample and per subject.</span>
+                </div>
+                <p className="question-stat">
+                  <strong>
+                    {formatCount(
+                      bundle.response_analysis.n.samples_yes +
+                        bundle.response_analysis.n.samples_no,
+                    )}
+                  </strong>
+                  <small>PBMC samples</small>
+                </p>
               </li>
               <li>
-                <Link href="/baseline/">Who is in the baseline miraclib cohort?</Link>
-                <span>Project, response, and sex breakdowns</span>
+                <div className="question-copy">
+                  <Link href="/baseline/">Who is in the baseline miraclib cohort?</Link>
+                  <span>Project, response, and sex breakdowns at day 0.</span>
+                </div>
+                <p className="question-stat">
+                  <strong>{formatCount(bundle.baseline_subset.n_subjects)}</strong>
+                  <small>subjects</small>
+                </p>
               </li>
             </ol>
           </section>
