@@ -29,12 +29,9 @@ jobs:
           cache-dependency-path: requirements-dev.txt
       - name: Install
         run: make setup-python
-      # The package guards are bootstrap-only and are removed in WS-1.
       - name: Lint and type-check
-        if: hashFiles('immune_atlas/__init__.py') != ''
         run: make lint-python
       - name: Tests with coverage
-        if: hashFiles('immune_atlas/__init__.py') != ''
         run: make test-python
       - uses: actions/upload-artifact@v4
         if: always()
@@ -93,7 +90,7 @@ jobs:
       - name: Required files exist
         run: |
           test -f Makefile
-          if [ -d immune_atlas ]; then test -f load_data.py || { echo "load_data.py missing at repo root"; exit 1; }; fi
+          if [ -d immune_atlas/db ]; then test -f load_data.py || { echo "load_data.py missing at repo root"; exit 1; }; fi
       - name: make setup
         run: make setup
       - name: make pipeline

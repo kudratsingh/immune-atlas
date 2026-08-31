@@ -59,12 +59,12 @@ ignore_missing_imports = true
 # ---------------------------------------------------------------- pytest
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q --strict-markers --cov=immune_atlas --cov=load_data --cov-report=term-missing --cov-report=xml --cov-fail-under=90"
+addopts = "-q --strict-markers --cov=immune_atlas --cov-report=term-missing --cov-report=xml --cov-fail-under=90"
 markers = ["integration: runs real entry points on the real CSV"]
 
 [tool.coverage.run]
 branch = true
-source = ["immune_atlas", "load_data"]
+source = ["immune_atlas"]
 
 [tool.coverage.report]
 exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]

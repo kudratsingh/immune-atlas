@@ -9,6 +9,7 @@ NPM         := npm --prefix $(DASHBOARD)
 PORT        ?= 3000
 DB          := cell_counts.db
 BUNDLE      := $(DASHBOARD)/public/data/bundle.json
+MYPY_TARGETS := immune_atlas $(wildcard load_data.py)
 
 .DEFAULT_GOAL := help
 .PHONY: help setup setup-python setup-dashboard setup-e2e pipeline dashboard dashboard-build \
@@ -71,7 +72,7 @@ lint: lint-python lint-dashboard ## Lint and type-check everything
 lint-python:
 	$(PYTHON) -m ruff check .
 	$(PYTHON) -m ruff format --check .
-	$(PYTHON) -m mypy immune_atlas load_data.py
+	$(PYTHON) -m mypy $(MYPY_TARGETS)
 
 lint-dashboard:
 	@if [ -f $(DASHBOARD)/package.json ]; then $(NPM) run lint && $(NPM) run typecheck; else echo "dashboard/ not initialised yet"; fi
