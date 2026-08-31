@@ -2,22 +2,27 @@ import { PALETTE } from "@/lib/palette";
 
 interface TableBox {
   name: string;
-  columns: string;
+  columns: string[];
   x: number;
   y: number;
 }
 
 const TABLES: TableBox[] = [
-  { name: "projects", columns: "project_id", x: 10, y: 10 },
+  { name: "projects", columns: ["project_id"], x: 10, y: 10 },
   {
     name: "subjects",
-    columns: "subject_id, condition, age, sex, treatment, response",
+    columns: ["subject_id, condition, age, sex,", "treatment, response"],
     x: 10,
-    y: 90,
+    y: 104,
   },
-  { name: "samples", columns: "sample_id, sample_type, time_from_treatment_start", x: 10, y: 170 },
-  { name: "cell_counts", columns: "sample_id, population_id, count", x: 300, y: 170 },
-  { name: "cell_populations", columns: "population_id, name, display_name", x: 300, y: 90 },
+  {
+    name: "samples",
+    columns: ["sample_id, sample_type,", "time_from_treatment_start"],
+    x: 10,
+    y: 198,
+  },
+  { name: "cell_populations", columns: ["population_id, name, display_name"], x: 320, y: 104 },
+  { name: "cell_counts", columns: ["sample_id, population_id, count"], x: 320, y: 198 },
 ];
 
 const LINKS: [string, string][] = [
@@ -28,7 +33,7 @@ const LINKS: [string, string][] = [
 ];
 
 const WIDTH = 260;
-const HEIGHT = 60;
+const HEIGHT = 74;
 
 function centre(name: string): { x: number; y: number } {
   const box = TABLES.find((table) => table.name === name);
@@ -40,7 +45,7 @@ export function SchemaDiagram() {
   return (
     <div className="schema-diagram">
       <svg
-        viewBox="0 0 580 250"
+        viewBox="0 0 590 284"
         role="img"
         aria-label="Database schema: projects contain subjects, subjects contain samples, and cell counts join samples with cell populations"
       >
@@ -66,22 +71,30 @@ export function SchemaDiagram() {
               y={table.y}
               width={WIDTH}
               height={HEIGHT}
-              rx={4}
+              rx={8}
               fill={PALETTE.panel}
               stroke={PALETTE.rule}
             />
             <text
-              x={table.x + 12}
-              y={table.y + 24}
+              x={table.x + 14}
+              y={table.y + 26}
               fill={PALETTE.ink}
               fontSize={14}
               fontWeight={600}
             >
               {table.name}
             </text>
-            <text x={table.x + 12} y={table.y + 44} fill={PALETTE.inkMuted} fontSize={11}>
-              {table.columns}
-            </text>
+            {table.columns.map((line, index) => (
+              <text
+                key={line}
+                x={table.x + 14}
+                y={table.y + 46 + index * 15}
+                fill={PALETTE.inkMuted}
+                fontSize={10.5}
+              >
+                {line}
+              </text>
+            ))}
           </g>
         ))}
       </svg>
